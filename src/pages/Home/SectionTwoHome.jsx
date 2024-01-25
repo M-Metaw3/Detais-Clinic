@@ -1,45 +1,52 @@
 
 
 import { Container, Flex, Button, Text, VStack,Center, useBreakpointValue } from '@chakra-ui/react'
-import { AspectRatio ,Box } from '@chakra-ui/react'
-
+import { AspectRatio ,Image,Box } from '@chakra-ui/react'
+import './stylehome/section2.css'
+import imagesection2 from '../../assets/image 4 (1).png'
+import { useEffect ,useRef } from 'react'
 export default function SectionTwoHome() {
-  return (
+  const imageref=useRef()
 
-<AspectRatio m={"50px"} maxW='full' maxHeight='70vh'  ratio={4 / 3}>
-  <iframe
-    title='naruto'
-    src='https://www.youtube.com/embed/QhBnZ6NPOY0'
-    allowFullScreen
-  />
-</AspectRatio>
+  useEffect(()=>{
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>=400){
+    imageref.current.style.transform="translate(45px, 45px)"
+    imageref.current.style.transition="0.5s"
+   
+
+
+  }else{
+    imageref.current.style.transform="translate(0px, 0px)"
+   
+
+  };
+})
+
+  },[])
+  return (
+<Box className='test' >
+<Box className='section2image' >
+  <Image ref={imageref} className='section2imagemain'  src={imagesection2} alt='Dan Abramov' />
+  </Box>
+  <Box className='section2text'width={"40%"} alignItems={"center"} textAlign={"center"}>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  <Text className='section2text1'  >Who are we ?</Text>
+  <Text className='section2text2'  >Lorem ipsum dolor sit amet consectetur. Eget dignissim aenean quam viverra gravida donec. Ipsum fermentum cursus mattis pulvinar pellentesque malesuada ridiculus. Turperos pellentesque viverra suspendisse sem. risus in posuere dui metus commodo </Text>
+  </Box>
+</Box>
+// <AspectRatio m={"50px"} maxW='full' maxHeight='70vh'  ratio={4 / 3}>
+//   <iframe
+//     title='naruto'
+//     src='https://www.youtube.com/embed/QhBnZ6NPOY0'
+//     allowFullScreen
+//   />
+// </AspectRatio>
 
   );
 }
 
 
-// import React from 'react';
-// import YouTube from 'react-youtube';
-// import { Container } from '@mui/material/Container';
-
-// const SectionTwoHome = () => {
-//   const videoId = 'https://www.youtube.com/watch?v=5iAt1F62aNM&ab_channel=%D9%83%D9%8A%D9%85%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D8%A8-kimoElDeeb'; // Replace with your YouTube video ID
-
-//   const opts = {
-//     height: '390',
-//     width: '640',
-//     playerVars: {
-//       // https://developers.google.com/youtube/player_parameters
-//       autoplay: 1,
-//     },
-//   };
-
-//   const onReady = (event) => {
-//     // Access to player in all event handlers via event.target
-//     event.target.pauseVideo();
-//   };
-
-//   return <YouTube videoId={videoId} opts={opts} onReady={onReady} />;
-// };
-
-// export default SectionTwoHome;

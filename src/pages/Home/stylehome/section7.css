@@ -1,0 +1,28 @@
+.namecard{
+    display: inline-flex;
+ padding: 15px 89px; 
+  justify-content: center; 
+align-items: center; 
+gap: 10px;
+border-radius: 8px;
+opacity: 0.7;
+background: #475767;
+width: 98%;
+height: 50px;
+
+backdrop-filter: blur(100px);
+}
+.text1{
+opacity: 1;
+padding-top: 10px;
+margin-bottom: 10px;
+text-align: center;
+align-items: center;
+color: var(--Secondary-color, #FFF);
+font-family: "Open Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 19.2px */
+text-transform: capitalize;
+}

@@ -5,6 +5,7 @@ import SectionThreeHome from './SectionThreeHome';
 import SectionFourHome from './SectionFourHome';
 import SectionFiveHome from './SectionFiveHome';
 import SectionSixHome from './SectionSixHome';
+import SectionSevenHome from './SectionSevenHome';
 
 const HomePage = () => {
     return (
@@ -14,6 +15,7 @@ const HomePage = () => {
             <SectionThreeHome/>
             <SectionFourHome/>
             <SectionFiveHome/>
+            <SectionSevenHome/>
             <SectionSixHome/>
         </div>
 

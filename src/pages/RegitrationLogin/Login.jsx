@@ -42,8 +42,8 @@ export default function Login() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main"  maxWidth="xl">
+    <ThemeProvider  theme={defaultTheme}>
+      <Container style={{border:"1px solid red" ,width:"70%",flexWrap:"wrap"}} component="main"  maxWidth="xl">
         <CssBaseline />
         <Box
           sx={{
@@ -58,7 +58,7 @@ export default function Login() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
+            <Grid container  spacing={2}>
               <Grid item xs={12} sm={6}>
                 
                 <TextField

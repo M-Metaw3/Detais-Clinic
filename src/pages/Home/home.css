@@ -1,0 +1,142 @@
+.animation {
+    color: #66FCF1;
+
+    font-family: Manrope;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    position: absolute;
+    animation: Navbar 1s 1  forwards;
+}
+
+@keyframes Navbar {
+    0% {
+        top:0;
+        left: 0;
+    }
+    100% {
+        top:220px;
+        left: 39px;
+    }
+}
+
+.navbarimage{
+    background: url('../../assets/Property\ 1=Frame\ 137.png');
+    
+    animation: Navbarimage 3s 1 linear forwards;
+
+}
+@keyframes Navbarimage {
+    0% {
+        opacity: 0.1;
+       
+    }
+    20% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+       
+    }
+}
+.newtext{
+    color: #FFF;
+    padding: 5px;
+    margin: 10px;
+font-family: Manrope;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: 22px; /* 91.667% */
+text-transform: capitalize;
+}
+.newtext2{
+    color: rgba(255, 255, 255, 0.75);
+padding: 5px;
+margin: 10px;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27.5px; /* 152.778% */
+    text-transform: capitalize;
+}
+.containernewtext{
+    visibility: hidden;
+
+    animation: containertext 3s 1  forwards linear;
+
+}
+@keyframes containertext {
+    0% {
+        visibility: hidden;
+       
+    }
+    20% {
+        visibility: hidden;
+       
+    }    40% {
+        visibility: hidden;
+       
+    }    60% {
+        visibility: hidden;
+       
+    }    80% {
+        visibility: hidden;
+       
+    
+    }
+    100% {
+        visibility: visible;
+       
+    }
+}
+.containerbutton{
+    display: flex;
+    text-align: center;
+width: 185px;
+height: 37px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+}
+.section1logo{
+    animation: herosection 4s 1 linear forwards;
+    width: 100%;
+    margin: auto;
+    
+}
+@keyframes herosection {
+    0% {
+        opacity: 1;
+       
+    }
+    20% {
+        opacity: 0.9;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    80% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0;
+       
+    }
+}

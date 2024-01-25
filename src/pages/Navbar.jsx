@@ -1,6 +1,7 @@
-'use client'
-
 import {
+  Divider ,
+  Image ,
+  Center,
   Box,
   Flex,
   Text,
@@ -11,11 +12,11 @@ import {
   Icon,
   Popover,
   PopoverTrigger,
-  PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react'
+import { PhoneIcon, AddIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import {
   HamburgerIcon,
   CloseIcon,
@@ -23,16 +24,20 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
+import Colormoodwitcher from './Colormoodwitcher'
+import logo from '../assets/logo (1).svg'
+
 
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box>
+    <Box  width={"100%"} position={"sticky"} zIndex={"1"} top={"0"}     >
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
+        minH={'60px'} 
+   justifyContent={"space-around"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -50,39 +55,53 @@ export default function Nav() {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text>
 
+        <Flex 
+          ml={"40px"}
+          flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+         
+        <Image
+  
+    
+style={{width:"100px",height:'70px'}}
+    objectFit='fill'
+    src={logo}
+    alt='Dan Abramov'
+  />
+
+          <Center marginLeft={"35px"} height='65px'>
+  <Divider  orientation='vertical' />
+</Center>
         
         </Flex>
+
         <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
+
+          <Colormoodwitcher/>
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
-          direction={'row'}
+          direction={'column'}
           spacing={6}>
            <NavLink to={`/r`} className='text-decoration-none d-flex align-items-center'>
           <Button
+          mr={"40px"}
           onClick={()=>{console.log("ssssssssss")}}
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
+            fontSize={'14px'}
             fontWeight={600}
+            lineHeight={"20px"}
             color={'white'}
             bg={'blue.400'}
             href={'#'}
             _hover={{
               bg: 'blue.300',
             }}>
-              
               login In
+             <ArrowForwardIcon margin={"3px"}/> 
           </Button >
           </NavLink>
         </Stack>
@@ -104,38 +123,28 @@ const DesktopNav = () => {
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
+          <Popover trigger={'hover'}  placement={'bottom-start'}>
             <PopoverTrigger>
               <Box
+
+       margin="15px"
                 as="a"
-                p={2}
+                p={1}
                 href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
+                fontSize={'16px'}
+                fontWeight={400}
+                color={"#6D758F"}
+                transition={"0.3s"}
                 _hover={{
                   textDecoration: 'none',
-                  color: linkHoverColor,
+                  color: '6D758F',
+                 
+                fontWeight:600 
                 }}>
                 {navItem.label}
               </Box>
             </PopoverTrigger>
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
           </Popover>
         </Box>
       ))}
@@ -184,6 +193,7 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      
     </Stack>
   )
 }
@@ -214,6 +224,7 @@ const MobileNavItem = ({ label, children, href }) => {
             h={6}
           />
         )}
+        
       </Box>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
@@ -231,6 +242,7 @@ const MobileNavItem = ({ label, children, href }) => {
               </Box>
             ))}
         </Stack>
+        
       </Collapse>
     </Stack>
   )
@@ -239,26 +251,20 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: 'about us',
+    label: 'Services',
+  },
+  
+  {
+    label: 'Blog',
   },
   {
-    label: 'Find Work',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
+    label: 'About Us',
   },
   {
-    label: 'Learn Design',
-    href: '#',
+    label: 'Contact Us',
+  },
+  {
+    label: 'Language',
   },
 
 ]

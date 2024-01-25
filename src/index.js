@@ -23,7 +23,7 @@ root.render(
   <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <Router>
-        <ChakraProvider>
+    <ChakraProvider>
     <App />
     </ChakraProvider>
     </Router>
