@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'react-infinite-logo-slider'
 
 import logo from "../../assets/logo.jpg"
+import Url from '../../api/ApiUrl';
 const SliderLogo = ({logo}) => {
     console.log(logo);
     return (
@@ -16,7 +17,7 @@ const SliderLogo = ({logo}) => {
            (
 
 <Slider.Slide >
-                <img src={`http://localhost:3111/Homepage/${el?.images}`} alt="any" className='w-36' />
+                <img src={`${Url}/Homepage/${el?.images}`} alt="any" className='w-36' />
                 
             </Slider.Slide>
 

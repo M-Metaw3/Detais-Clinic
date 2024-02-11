@@ -17,6 +17,7 @@ import { BsUpload } from 'react-icons/bs';
       } from '@tanstack/react-query'
 import {GetData, UpdateDataWithImg} from '../../api/apiFactory';
 import {PostDataWithImg} from '../../api/apiFactory';
+import Url from '../../api/ApiUrl';
 
 
 
@@ -160,7 +161,7 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
 
    {formData.images&&(
 
-   <Image boxSize='200px' w={'95%'} borderRadius={'5px'} src={URL?.createObjectURL(formData.images)?URL?.createObjectURL(formData.images):`  http://localhost:3111/HomePage/${data[0]?.images}`} alt='Dan Abramov' />)}
+   <Image boxSize='200px' w={'95%'} borderRadius={'5px'} src={URL?.createObjectURL(formData.images)?URL?.createObjectURL(formData.images):`${Url}/HomePage/${data[0]?.images}`} alt='Dan Abramov' />)}
 
    <Input
   name="images"
@@ -171,7 +172,7 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
   <p>Selected file: {formData.images.name}</p>
 )}
 <Box>
-<Image src={data&&data[0]?.images&&`http://localhost:3111/HomePage/${data[0]?.images}`}/>
+<Image src={data&&data[0]?.images&&`${Url}/HomePage/${data[0]?.images}`}/>
 
 </Box>
 

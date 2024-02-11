@@ -12,6 +12,7 @@ import {
   Flex
 } from '@chakra-ui/react'
 import moment from"moment";
+import Url from '../../api/ApiUrl';
 export default function SectionTwoBlog({data}) {
 
   return (
@@ -30,7 +31,7 @@ export default function SectionTwoBlog({data}) {
           width={"100%"}
           height={"100%"}
             src={
-            `http://localhost:3111/Blogs/${el?.images}`
+            `${Url}/Blogs/${el?.images}`
             }
             fill
             alt="Example"

@@ -15,6 +15,7 @@ import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
       } from '@tanstack/react-query'
 import {DeleteData, GetData} from '../../api/apiFactory';
 import {PostDataWithImg} from '../../api/apiFactory';
+import Url from '../../api/ApiUrl';
 
 
 
@@ -105,7 +106,7 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
             isClosable: true,
           });
   
-window.location.reload('http://localhost:3000/dashboard/contentmangment')
+window.location.reload('/dashboard/contentmangment')
        
           return;
         }
@@ -254,7 +255,7 @@ type="file"
 
 <Box m={'10px'} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
 <Box mb={"10px"} >
-  <Image boxSize={'200px'} borderRadius={'15px'} w={"100%"} src={el&&el.images&&`http://localhost:3111/Homepage/${el.images}`} alt='Dan Abramov' />
+  <Image boxSize={'200px'} borderRadius={'15px'} w={"100%"} src={el&&el.images&&`${Url}/Homepage/${el.images}`} alt='Dan Abramov' />
 </Box>
 <FormControl>
   <FormLabel>Name</FormLabel>

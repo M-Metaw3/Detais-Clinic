@@ -49,7 +49,7 @@ const UpdateUser = () => {
   };
   const handleUpdateUser = async () => {
     try {
-     const res= await axios.put(`http://localhost:3111/users/`, newUser);
+     const res= await axios.put(`${Url}/users/`, newUser);
       setUpdateModalOpen(false);
       console.log(res)
     //   fetchUsers();

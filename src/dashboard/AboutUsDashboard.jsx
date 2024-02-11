@@ -4,6 +4,7 @@ import { ChakraProvider,Image, Box,Textarea, Button, FormControl, FormLabel, Inp
 import FileUpload from '../shared/FileUpload'; // Import your FileUpload component
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {DeleteData, PostDataWithImg} from '../api/apiFactory';
+import Url from '../api/ApiUrl';
 // import { Image } from 'next/image';
 
 const YourFormComponent = ({data}) => {
@@ -197,7 +198,7 @@ const handelerdelete=async(e)=>{
 
 <Box w={"100%"}>    <Box w={'100%'} display={'flex'}  p={'10px'}  >
     <Box m={"15px"} w={'48%'} >
-<Image src={el&&el?.images&&`http://localhost:3111/AboutUs/${el?.images}`}/>
+<Image src={el&&el?.images&&`${Url}/AboutUs/${el?.images}`}/>
 
 {/* <FileUpload onFileSelect={handleFileSelect} /> */}
 </Box>

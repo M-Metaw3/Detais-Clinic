@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from 'react-icons/io5'
 import { ReactElement } from 'react'
+import Url from '../../api/ApiUrl';
 
 
 
@@ -51,7 +52,7 @@ export default function SectionTwoAboutus({data}) {
             rounded={'md'}
             alt={'feature image'}
             src={
-            `http://localhost:3111/AboutUs/${data?.images}`
+            `${Url}/AboutUs/${data?.images}`
             }
             objectFit={'cover'}
           />

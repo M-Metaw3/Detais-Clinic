@@ -14,6 +14,7 @@ import './stylehome/section7.css'
 import linkedin from '../../assets/LinkedIn.png'
 import doctor from '../../assets/image 6.png'
 import { NavLink } from 'react-router-dom'
+import Url from '../../api/ApiUrl'
 
 const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
@@ -48,7 +49,7 @@ console.log(data)
       justifyContent={"center"}
 
         style={{
-            backgroundImage: `url(http://localhost:3111/Homepage/${el?.images})`,
+            backgroundImage: `url(${Url}/Homepage/${el?.images})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

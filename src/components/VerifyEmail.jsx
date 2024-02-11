@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Image,Button,useToast } from '@chakra-ui/react';
 import logo from '../assets/Group 847 (1).png'
 import  axios  from 'axios';
+import Url from '../api/ApiUrl';
 
 
 const VerifyEmail = () => {
@@ -12,7 +13,7 @@ const toast = useToast();
 
     const UpdateData = async () => {
        try {
-           const res = await axios.patch(`http://localhost:3111/users/verifyemail/${token}`);
+           const res = await axios.patch(`${Url}/users/verifyemail/${token}`);
       if (res.status==200){
         toast({
             title: 'success',

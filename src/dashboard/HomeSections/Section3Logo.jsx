@@ -15,6 +15,7 @@ import {DeleteData, GetData} from '../../api/apiFactory';
 import {PostDataWithImg} from '../../api/apiFactory';
 
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
+import Url from '../../api/ApiUrl';
 
 
 const Section3Logo = ({header,data,enumsec} ) => {
@@ -188,7 +189,7 @@ type="file"
   <Box key={indx} m={"10px"} width={"13%"} bgColor={'rgba(220, 222, 228, 0.25)'}>
     <Text fontSize={'20px'} m={"5px"}>Logo {indx+1}</Text>
 <Box p={'10px'} margin={'auto'} mb={"5px"}  width={'75%'} >
-  <Image m={'auto'} borderRadius={'5px'} mb={"10px"} boxSize='150px' src={`http://localhost:3111/Homepage/${el.images}`} alt='logo' />
+  <Image m={'auto'} borderRadius={'5px'} mb={"10px"} boxSize='150px' src={`${Url}/Homepage/${el.images}`} alt='logo' />
 </Box>
 <Button onClick={()=>handelerdelete(el._id)}>Delete</Button>
 </Box>

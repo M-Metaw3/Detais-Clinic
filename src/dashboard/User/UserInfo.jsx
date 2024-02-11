@@ -803,6 +803,7 @@ import {
 import { GetData,DeleteData } from '../../api/apiFactory';
 import Skeletoncomp from '../../components/Skeletoncomp';
 import { Text } from '@chakra-ui/react';
+import Url from '../../api/ApiUrl';
 const UserInfo = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
@@ -864,7 +865,7 @@ console.log(data);
 
   const handleUpdateUser = async () => {
     try {
-     const res= await axios.put(`http://localhost:3111/users/${selectedUser._id}`, newUser);
+     const res= await axios.put(`${Url}/users/${selectedUser._id}`, newUser);
      console.log(res)
      if (res.status === 200) {
         toast({

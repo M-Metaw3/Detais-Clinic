@@ -19,6 +19,7 @@ import Files from './Files';
 import { AddIcon } from '@chakra-ui/icons';
 
 import { PostDataWithImg ,UpdateDataWithImg ,DeleteData} from './../../api/apiFactory';
+import Url from '../../api/ApiUrl';
 
 const ServiceForm = ({data}) => {
   console.log(data);
@@ -310,7 +311,7 @@ Price
 <Box  bg={'white'}  p={"10px"}  width={'100%'} justifyContent={'space-around'} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} >
 {
 el?.images&&el?.images?.map((image)=>(
-<Image boxSize={"300px"} borderRadius={'20px'}  src={image&&`  http://localhost:3111/services/${image}`} alt='Dan Abramov' />
+<Image boxSize={"300px"} borderRadius={'20px'}  src={image&&`${Url}/services/${image}`} alt='Dan Abramov' />
 ))
 
 

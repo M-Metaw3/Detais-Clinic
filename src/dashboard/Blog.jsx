@@ -20,8 +20,9 @@ import {
 } from '@material-ui/core';
 import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon,  } from '@material-ui/icons';
 import axios from 'axios';
+import Url from '../api/ApiUrl';
 
-const apiUrl = 'http://localhost:3111/blogs'; // Replace with your API URL
+const apiUrl = `${Url}/blogs`; // Replace with your API URL
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -159,7 +160,7 @@ const Blog = () => {
             <CardMedia
         component="img"
         height="194"
-        image={blog&&blog?.images&&`http://localhost:3111/Blogs/${blog?.images}`}
+        image={blog&&blog?.images&&`${Url}/Blogs/${blog?.images}`}
         alt="Paella dish"
       />
               <CardContent>

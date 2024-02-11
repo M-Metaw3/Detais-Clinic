@@ -725,6 +725,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import Url from '../api/ApiUrl';
 
 const ContactDashboard = () => {
   const toast = useToast();
@@ -745,7 +746,7 @@ const ContactDashboard = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await axios.get('http://localhost:3111/contactus/contact');
+      const response = await axios.get(`${Url}/contactus/contact`);
       setContacts(response?.data?.data);
     } catch (error) {
       toast({
@@ -768,7 +769,7 @@ const ContactDashboard = () => {
 
     try {
       if (selectedContact) {
-        const response = await axios.put(`http://localhost:3111/contactus/contact/${selectedContact._id}`, formData);
+        const response = await axios.put(`${Url}/contactus/contact/${selectedContact._id}`, formData);
 
         if (response.status === 200) {
           toast({
@@ -781,7 +782,7 @@ const ContactDashboard = () => {
           setSelectedContact(null);
         }
       } else {
-        const response = await axios.post('http://localhost:3111/contactus/contact', formData);
+        const response = await axios.post(`${Url}/contactus/contact`, formData);
 
         if (response.status === 201) {
           toast({
@@ -821,7 +822,7 @@ const ContactDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:3111/contactus/contact/${id}`);
+      const response = await axios.delete(`${Url}/contactus/contact/${id}`);
 
       if (response.status === 204) {
         toast({
@@ -848,7 +849,7 @@ const ContactDashboard = () => {
 
   const handleDeleteAll = async () => {
     try {
-      const response = await axios.delete(`http://localhost:3111/contactus/deleteAll`);
+      const response = await axios.delete(`${Url}/contactus/deleteAll`);
 console.log(response)
       if (response.status === 204) {
         toast({

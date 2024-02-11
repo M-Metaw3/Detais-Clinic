@@ -7,13 +7,14 @@ import logo2 from '../../assets/Property 1=Frame 138.png'
 
 import "./home.css"
 import { NavLink } from 'react-router-dom'
+import Url from '../../api/ApiUrl'
 export default function SectionOneHome({data}) {
 console.log(data)
   return (
     <>    <Flex
     className='navbarimage'
     style={{
-      backgroundImage: `url(http://localhost:3111/Homepage/${data&&data[0]?.images})`,
+      backgroundImage: `url(${Url}/Homepage/${data&&data[0]?.images})`,
     
     }}
       w={'full%'}

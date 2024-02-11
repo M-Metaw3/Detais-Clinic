@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Image, Button, FormLabel, Input } from '@chakra-ui/react';
 import logo from '../assets/Group 847 (1).png'
 import  axios  from 'axios';
+import Url from '../api/ApiUrl';
 
 const Resestpass = () => {
     const {token} = useParams()
@@ -26,7 +27,7 @@ const Resestpass = () => {
 formData.password!=formData.passwordConfirm??alert("password not matching")
 
        try {
-           const res = await axios.patch(`http://localhost:3111/users/resetPassword/${token}`,formData);
+           const res = await axios.patch(`${Url}/users/resetPassword/${token}`,formData);
            console.log(res)
       if (res.status==200){
         alert("your password reset successful")

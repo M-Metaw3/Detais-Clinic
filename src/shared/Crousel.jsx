@@ -15,6 +15,7 @@ import {
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick'
+import Url from '../api/ApiUrl'
 
 // Settings for the slider
 const settings = {
@@ -110,7 +111,7 @@ console.log(data)
          
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
-            backgroundImage={`url(http://localhost:3111/services/${card&&card})`}>
+            backgroundImage={`url(${Url}/services/${card&&card})`}>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack

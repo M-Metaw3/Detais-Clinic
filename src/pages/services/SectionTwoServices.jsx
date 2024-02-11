@@ -17,6 +17,7 @@ import {
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { FiShoppingCart } from 'react-icons/fi'
 import { NavLink } from 'react-router-dom'
+import Url from '../../api/ApiUrl'
 
 const data = {
   isNew: true,
@@ -80,7 +81,7 @@ function SectionTwoServices({dataservices}) {
           <Circle size="10px" position="absolute" top={2} right={2} bg="red.200" />
         )} */}
 
-        <Image src={`http://localhost:3111/services/${el&&el?.imageCover}`} height={"300px"}       backgroundSize={'cover'}
+        <Image src={`${Url}/services/${el&&el?.imageCover}`} height={"300px"}       backgroundSize={'cover'}
       backgroundPosition={'center '} width={"full"} alt={`Picture of ${data.name}`} roundedTop="lg" />
 
         <Box p="6">
