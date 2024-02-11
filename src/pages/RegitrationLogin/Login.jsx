@@ -1,5 +1,5 @@
 
-import * as React from 'react';
+import  React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,7 +13,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { PostDatalogin } from '../../api/apiFactory';
 
+import { useNavigate, NavLink } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -32,18 +35,83 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+const nav= useNavigate()
+const toast = useToast();
+  const [formData, setFormData] = useState({
+    // Define your form fields here
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+    passwordConfirm:'',
+    country:'',
+    // passwordConfirm:'',
+    clinic:'',
 
+    // ... other form fields
+  })
+
+
+
+console.log(formData)
+
+
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    console.log(formData)
+if(formData.password!=formData.passwordConfirm){
+  toast({
+  title: 'warning',
+  description: 'password not matching',
+  status: 'warning',
+  duration: 3000,
+  isClosable: true,
+})
+
+return ;
+};
+    try {
+      const response = await PostDatalogin("users/signup",formData)
+      if(response.status==201){
+        
+        toast({
+          title: 'success',
+          description: 'success registeration please verify your account and then log in',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        });
+                nav('/login')
+                return;
+              }
+      if(response.response.status==500){
+
+        toast({
+          title: 'Error',
+          description: 'Failed to fetch users. Please try again.',
+          status: response.response.data.messge,
+          duration: 3000,
+          isClosable: true,
+        });
+  
+      }
+    } catch (error) {
+    }
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   return (
     <ThemeProvider  theme={defaultTheme}>
-      <Container style={{border:"1px solid red" ,width:"70%",flexWrap:"wrap"}} component="main"  maxWidth="xl">
+      <Container style={{ width:"70%",flexWrap:"wrap"}} component="main"  maxWidth="xl">
         <CssBaseline />
         <Box
           sx={{
@@ -62,12 +130,71 @@ export default function Login() {
               <Grid item xs={12} sm={6}>
                 
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    InputProps={{
+                      inputProps: {
+                        minLength: 5,  // Set the minimum length for the email
+                        maxLength: 50, // Set the maximum length for the email
+                      },
+                    }}
                   required
                   fullWidth
-                  id="firstName"
+                  id="name"
                   label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                   type="text"
+                   InputProps={{
+                    inputProps: {
+                      minLength: 5,  // Set the minimum length for the email
+                      maxLength: 50, // Set the maximum length for the email
+                    },
+                  }}
+                   value={formData.clinic}
+                   onChange={handleChange}
+                  required
+                  fullWidth
+                  id="clinic"
+                  label="clinic"
+                  name="clinic"
+                  autoComplete="clinic-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  id="email"
+                  label="Email Address"
+                  InputProps={{
+                    inputProps: {
+                      minLength: 5,  // Set the minimum length for the email
+                      maxLength: 50, // Set the maximum length for the email
+                    },
+                  }}
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="phone"
+                  required
+                  fullWidth
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  id="phoneNumber"
+                  label="phoneNumber"
                   autoFocus
                 />
               </Grid>
@@ -75,59 +202,29 @@ export default function Login() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  label="country"
+                  name="country"
+                  autoComplete="country"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
+         
               
               <Grid item xs={12}>
                 <TextField
                   required
+                  InputProps={{
+                    inputProps: {
+                      minLength: 10,  // Set the minimum length for the email
+                      maxLength: 50, // Set the maximum length for the email
+                    },
+                  }}
                   fullWidth
                   name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   label="Password"
                   type="password"
                   id="password"
@@ -138,11 +235,13 @@ export default function Login() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
+                  name="passwordConfirm"
+                  label="passwordConfirm"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  value={formData.passwordConfirm}
+                  onChange={handleChange}
+                  id="confirmpassword"
+                  autoComplete="confirmpassword"
                 />
               </Grid>
               
@@ -163,9 +262,9 @@ export default function Login() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <NavLink to="/login" variant="body2">
                   Already have an account? Sign in
-                </Link>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>

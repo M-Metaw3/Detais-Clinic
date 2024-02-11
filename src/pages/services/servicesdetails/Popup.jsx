@@ -11,10 +11,7 @@ import {
 import Otp from './Otp';
 const Popup = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const handlerOtp=()=>{
-        console.log("handlerOtp")
-        return <Otp/>
-    }
+ 
     return (
         <>
         <Button 
@@ -47,8 +44,8 @@ const Popup = () => {
              
             </ModalBody>
             <ModalFooter display={"flex"} justifyContent={"center"} border={"1px solid red"} >
-            <Otp/>
-              <Button  onClick={handlerOtp} colorScheme='blue'>Please lgin first</Button>
+           
+              <Button  colorScheme='blue'>Please lgin first</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

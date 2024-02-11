@@ -8,11 +8,12 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  Image,
   VisuallyHidden,
 } from '@chakra-ui/react'
 import { FaInstagram, FaTwitter, FaYoutube,FaFacebook,FaLinkedin } from 'react-icons/fa'
 import { ReactNode } from 'react'
-
+import logo from '../assets/Group 1000001038.png'
 const Logo = (props) => {
   return (
     <svg height={32} viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -70,8 +71,8 @@ export default function Footer() {
         spacing={4}
         justify={'center'}
         align={'center'}>
-        <Logo />
-        <Stack border={"1px solid red"} width={"50%"}display={"flex"} justifyContent={"space-around"} padding={"20px"} direction={'row'} spacing={6}>
+        {/* <Logo /> */}
+        <Stack width={"50%"}display={"flex"} justifyContent={"space-around"} padding={"20px"} direction={'row'} spacing={6}>
           <Box as="a" href={'#'}>
           Services
           </Box>
@@ -103,13 +104,12 @@ export default function Footer() {
             </SocialButton>
           </Stack>
       </Container>
+ 
+     
+      <Image w={"200px"} h={"32vh"}  position={"relative"} bottom={{lg:"220px"}} top={"-150px"} left={"-180px"} width={"20%"} src={logo}/>
+  
 
-      {/* <Box
-        borderTopWidth={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.700')}>
     
-      </Box> */}
     </Box>
   )
 }

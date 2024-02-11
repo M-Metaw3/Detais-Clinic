@@ -13,6 +13,7 @@ import {
   Popover,
   PopoverTrigger,
   useColorModeValue,
+  useColorMode,
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -26,11 +27,27 @@ import {
 import { NavLink } from 'react-router-dom'
 import Colormoodwitcher from './Colormoodwitcher'
 import logo from '../assets/logo (1).svg'
+import logo2 from '../assets/Group 847 (1).png'
+
+import Cookies from 'js-cookie';
 
 
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure()
-
+  const { colorMode } = useColorMode();
+  const userCookie = Cookies?.get('user');
+  const user = userCookie ? JSON.parse(userCookie) : undefined;
+  const jwtCookie = Cookies?.get('user');
+  const jwt = jwtCookie ? JSON.parse(jwtCookie) : undefined;
+  const logoSrc = colorMode === 'dark' ? logo2 : logo;
+  const clearCookiesAndReload = () => {
+    // Clear cookies
+    Cookies.remove('user');
+    Cookies.remove('jwt');
+  
+    // Reload the page
+    window.location.reload('/');
+  };
   return (
     <Box  width={"100%"} position={"sticky"} zIndex={"1"} top={"0"}     >
       <Flex
@@ -59,16 +76,16 @@ export default function Nav() {
         <Flex 
           ml={"40px"}
           flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-         
+         <NavLink to={'/'}>
         <Image
-  
+
     
-style={{width:"100px",height:'70px'}}
+style={{width:"100px",height:'60px'}}
     objectFit='fill'
-    src={logo}
+    src={logoSrc}
     alt='Dan Abramov'
   />
-
+</NavLink>
           <Center marginLeft={"35px"} height='65px'>
   <Divider  orientation='vertical' />
 </Center>
@@ -85,7 +102,8 @@ style={{width:"100px",height:'70px'}}
           justify={'flex-end'}
           direction={'column'}
           spacing={6}>
-           <NavLink to={`/r`} className='text-decoration-none d-flex align-items-center'>
+            {!user&&!jwt?
+           <NavLink to={`/login`} className='text-decoration-none d-flex align-items-center'>
           <Button
           mr={"40px"}
           onClick={()=>{console.log("ssssssssss")}}
@@ -103,7 +121,27 @@ style={{width:"100px",height:'70px'}}
               login In
              <ArrowForwardIcon margin={"3px"}/> 
           </Button >
-          </NavLink>
+          </NavLink>:         
+          //  <NavLink to={`/`} className='text-decoration-none d-flex align-items-center'>
+          <Button
+          mr={"40px"}
+          onClick={()=>{clearCookiesAndReload()}}
+            as={'a'}
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'14px'}
+            fontWeight={600}
+            lineHeight={"20px"}
+            color={'white'}
+            bg={'red.400'}
+            href={'#'}
+            _hover={{
+              bg: 'red.800',
+            }}>
+           logout
+             <ArrowForwardIcon margin={"3px"}/> 
+          </Button >
+          // </NavLink>
+          }
         </Stack>
       </Flex>
 
@@ -124,7 +162,9 @@ const DesktopNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'}  placement={'bottom-start'}>
+
             <PopoverTrigger>
+              <NavLink to={navItem.link}>
               <Box
 
        margin="15px"
@@ -143,6 +183,7 @@ const DesktopNav = () => {
                 }}>
                 {navItem.label}
               </Box>
+              </NavLink>
             </PopoverTrigger>
 
           </Popover>
@@ -252,19 +293,28 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Services',
+    link:'/services'
   },
   
   {
     label: 'Blog',
+    link:'/blogs'
+
   },
   {
     label: 'About Us',
+    link:'/aboutus'
+
   },
   {
     label: 'Contact Us',
+    link:'/contactUs'
+
   },
-  {
-    label: 'Language',
-  },
+  // {
+  //   label: 'Language',
+  //   link:'/services'
+
+  // },
 
 ]

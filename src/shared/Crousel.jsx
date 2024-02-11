@@ -29,7 +29,7 @@ const settings = {
   slidesToScroll: 1,
 }
 
-export default function Crousel() {
+export default function Crousel({data}) {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState()
@@ -61,7 +61,7 @@ export default function Crousel() {
         'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
     },
   ]
-
+console.log(data)
   return (
     <Box position={'relative'} height={'500px'} width={'100%'} m={'auto'} overflow={'hidden'}>
       {/* CSS files for react-slick */}
@@ -101,15 +101,16 @@ export default function Crousel() {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((card, index) => (
+        {data&&data?.map((card, index) => (
           <Box
             key={index}
             height={'6xl'}
             position="relative"
             backgroundPosition="center"
+         
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
-            backgroundImage={`url(${card.image})`}>
+            backgroundImage={`url(http://localhost:3111/services/${card&&card})`}>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
@@ -120,10 +121,10 @@ export default function Crousel() {
                 top="50%"
                 transform="translate(0, -50%)">
                 <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                  {card.title}
+                  {card[index].title}
                 </Heading>
                 <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                  {card.text}
+                  {card[index].text}
                 </Text>
               </Stack>
             </Container>

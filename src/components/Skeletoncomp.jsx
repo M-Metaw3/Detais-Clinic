@@ -1,16 +1,15 @@
 import React from 'react';
-import {Grid} from '@chakra-ui/react'
+import {Grid,Image} from '@chakra-ui/react'
 import { Skeleton, SkeletonCircle, SkeletonText,Box } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
+import logo from '../assets/Group 1000001038.png'
 const Skeletoncomp = () => {
     return (
-        <div>
+        <Box  textAlign={'center'} alignItems={'center'} display={'flex'} alignContent={'center'} justifyContent={'center'} height={'100vh'} bgColor={'black'}>
                 
-    <Box padding='6' boxShadow='lg' bg='white'>
-  <SkeletonCircle size='10' />
-  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
-</Box>
-
-        </div>
+{/* <Image zIndex={'1'} src={logo}/> */}
+<Spinner  color='#1B6B93'  size='xl' />
+        </Box>
     );
 }
 

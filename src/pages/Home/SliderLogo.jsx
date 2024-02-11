@@ -2,8 +2,8 @@ import React from 'react';
 import Slider from 'react-infinite-logo-slider'
 
 import logo from "../../assets/logo.jpg"
-const SliderLogo = () => {
-    
+const SliderLogo = ({logo}) => {
+    console.log(logo);
     return (
         <Slider
             width="250px"
@@ -12,21 +12,16 @@ const SliderLogo = () => {
             blurBorders={true}
             blurBoderColor={'#fff'}
         >
-            <Slider.Slide >
-                <img src={logo} alt="any" className='w-36' />
-                <p>aaaaa</p>
+           {logo&&logo.map((el)=>
+           (
+
+<Slider.Slide >
+                <img src={`http://localhost:3111/Homepage/${el?.images}`} alt="any" className='w-36' />
+                
             </Slider.Slide>
-            <Slider.Slide>
-                <img src="/slider/any2.png" alt="any2" className='w-36' />
-            </Slider.Slide>
-            <Slider.Slide>
-                <img src="/slider/any3.png" alt="any3" className='w-36' />
-            </Slider.Slide>
-            <Slider.Slide>
-                <div>
-                    Other component...
-                </div>
-            </Slider.Slide>
+
+           ))} 
+          
         </Slider>
     )
 }              

@@ -27,17 +27,42 @@ import { MdLocalShipping } from 'react-icons/md'
 import { BsHddRackFill } from 'react-icons/bs'
 import Crousel from '../../../shared/Crousel'
 import Paymentform from './Paymentform'
-
+import { useParams } from 'react-router-dom';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
+import { GetData } from '../../../api/apiFactory'
+import Skeletoncomp from '../../../components/Skeletoncomp'
 export default function SercivcesDeteails() {
 
+  const { id } = useParams();
 
+  const { isPending, error, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+    GetData(`/service/${id}`)
+  })
+//   if(isPending){
+//     return <Skeletoncomp/>
+// }
+//   isPending??alert('fetching')
+// console.log(data)
+// console.log(id)
+// console.log()
 
+if(isPending){
+  return <Skeletoncomp/>
+}
 
-  
+ if(error){
+  console.log(error)
+ } 
   return (
     <Container maxW={'7xl'}>
       <Box mt={"20px"}>
-      <Crousel/>
+      <Crousel data={data&&data?.data&&data?.data?.data?.images}/>
       </Box>
       <Box
         columns={{ base: 1, lg: 2 }}
@@ -61,16 +86,22 @@ export default function SercivcesDeteails() {
         <Stack    width={"full"} spacing={{ base: 6, md: 10 }}>
           <Box as={'header'}>
             <Heading
+            mb={"10px"}
               lineHeight={1.1}
               fontWeight={600}
+              color={'#164863'} _dark={'white'}
               fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-              Automatic Watch
+              {data&&data?.data&&data?.data?.data?.name}
+            
             </Heading>
             <Text
-              color={useColorModeValue('gray.900', 'gray.400')}
+              // color={useColorModeValue('gray.900', 'gray.400')}
+        color={'#00A9FF'}_dark={{ color: "white" }}
+        mb={"10px"}
+
               fontWeight={300}
               fontSize={'2xl'}>
-              $350.00 USD
+              ${data&&data?.data&&data?.data?.data?.price}
             </Text>
           </Box>
 
@@ -78,32 +109,38 @@ export default function SercivcesDeteails() {
             spacing={{ base: 4, sm: 6 }}
             direction={'column'}
             divider={
-              <StackDivider borderColor={useColorModeValue('gray.200', 'gray.600')} />
+              <StackDivider 
+              // color={useColorModeValue('gray.900', 'gray.400')}
+              borderColor={'gray.200'}_dark={{ borderColor: "white" }}
+
+              // borderColor={useColorModeValue('gray.200', 'gray.600')} 
+              />
             }>
-            <VStack  border={"1px solid red"} spacing={{ base: 4, sm: 6 }}>
+            <Box m={"5px"}  spacing={{ base: 4, sm: 6 }}>
               <Text
               width={"100 em"}
               wordBreak={"break-word"}
-                color={useColorModeValue('gray.500', 'gray.400')}
+                // color={useColorModeValue('gray.500', 'gray.400')}
+                color={'gray.500'}_dark={{ color: "white" }}
+                mb={"10px"}
+
                 fontSize={'2xl'}
                 fontWeight={'300'}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt ut laboreLorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid amet
-                at delectus doloribus dolorum expedita hic, ipsum maxime modi nam officiis
-                porro, quae, quisquam quos reprehenderit velit? Natus, totam.
+              {data&&data?.data&&data?.data?.data?.description}
+               
               </Text>
-              <Text fontSize={'lg'}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid amet
-                at delectus doloribus dolorum expedita hic, ipsum maxime modi nam officiis
-                porro, quae, quisquam quos reprehenderit velit? Natus, totam.
+              <Text fontSize={'lg'} 
+            mb={"10px"}
+            >
+              How to get this service ?
                 <UnorderedList m={"30px"}>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+  <ListItem>To register and create an account you only need your name and email, we will ask you to verify your email, once verified. you will be pront some questions related to the design setting.</ListItem>
+  <ListItem>To request a design, simply go to my requests and click on the create button.It is important that you compress the STL file before uploading it to .zip . Answer the questions about the design configuration and specify the necessary settings for design.</ListItem>
+  <ListItem>Once we receive your request, a designer will take the request and perform the work requested, our system will notify you of the design progress. Once the design is completed, a sample of the result will be sent to you for your review and approval.</ListItem>
+  <ListItem>once the design is approved and confirmed, the payment box will be enabled to make the payment electronically through our available payment gateways. once the payment is confirmed, the platform will allow you to download the STL processed file for printing or milling.</ListItem>
 </UnorderedList>
               </Text>
-            </VStack>
+            </Box>
             {/* <Box>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}
@@ -186,9 +223,13 @@ export default function SercivcesDeteails() {
           </Stack> 
 
           <Box bgcolor={"#F5F8FA"}  borderRadius={"1px"} >
-            <Paymentform/>
+           
+            <Paymentform data={data&&data?.data&&data?.data?.data}/>
           </Box>
-<Box  
+
+
+          
+{/* <Box  
             textAlign={"center"}
             border={"1px solid red"} width={"full"}>
           <Button
@@ -209,7 +250,7 @@ export default function SercivcesDeteails() {
             }}>
             Add to cart
           </Button>
-          </Box>
+          </Box> */}
 
       
         </Stack>

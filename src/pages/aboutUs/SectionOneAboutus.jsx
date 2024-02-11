@@ -3,6 +3,7 @@
 import { Stack, Flex, Button, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 
 export default function SectionOneAboutus() {
+  
   return (
     <Flex
       w={'full%'}
@@ -23,7 +24,7 @@ export default function SectionOneAboutus() {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+About us
           </Text>
    
         </Stack>

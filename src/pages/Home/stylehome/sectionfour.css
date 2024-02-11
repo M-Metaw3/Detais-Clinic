@@ -1,5 +1,6 @@
 .mainbox{
-    background-color: #F0F3F6;
+    background-color: rgba(0, 52, 100, 0.06);
+    position: relative;
 }
 .heading{
     color: #345471;
@@ -29,3 +30,21 @@ background-color: #345471;
     background-color: #345471;
 
 } */
+.svg1{
+    width: 5%;
+    position: absolute;
+    top: 0px;
+    left: 23rem;
+    
+}
+.svg2{
+    width: 5%;
+    position: absolute;
+    bottom:  30px;
+    left: 23rem;
+    /* rotate: 360deg; */
+    transform: rotate(18deg);
+    /* animation-direction: alternate-reverse;
+     */
+    
+}

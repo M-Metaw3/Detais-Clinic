@@ -13,6 +13,8 @@ import {
     FormLabel,
   } from '@chakra-ui/react'
 import Otp from './Otp';
+import Section8 from '../../Home/Section8';
+import Cardnisa from './Cardnisa';
 const PopupVisacard = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [otp, setotp]=useState(false)
@@ -38,7 +40,7 @@ const PopupVisacard = () => {
               _hover={{
                 transform: 'translateY(2px)',
                 boxShadow: 'xl',
-              }} onClick={onOpen}>Visa Modal</Button>
+              }} onClick={onOpen}>Payment</Button>
         <Modal
           isCentered
           size={'xl'}
@@ -48,19 +50,8 @@ const PopupVisacard = () => {
          
         >
           <ModalOverlay />
-          <ModalContent  border={"1px solid red"} display={"flex"} justifyContent={"center"}   >
-            <ModalHeader width={"90%"}>
-                <Box display={"flex"} justifyContent={"center"} >
-                <Image
-width={"100%"} 
-textAlign={"center"}
-height={"300px"}
-  src='https://media.istockphoto.com/id/497492327/photo/credit-cards-stack-including-visa-master-and-maestro.jpg?s=612x612&w=0&k=20&c=T44y6gSkhcoabCaaO5DmWJdC6Pb9hgWD7mjl-l1No8Q='
-  alt='Dan Abramov'
-/>
+          <ModalContent   display={"flex"} justifyContent={"center"}   >
 
-</Box>
-</ModalHeader>
             <ModalCloseButton />
 
 
@@ -71,56 +62,16 @@ height={"300px"}
 
 
 
-
-            <ModalBody border={"1px solid red"} display={"flex"} flexDirection={"column"}>
-            <FormControl flexWrap={"wrap"} >
-    <Box  width={"100%"}>
-  <FormLabel  >file</FormLabel>
-  <Input textAlign={"left"} placeholder='write file description'   type='text' />
-  
-  </Box>
-
-</FormControl>
-
-
-
-
-<FormControl display={"flex"}  flexWrap={"wrap"} >
-    <Box  width={"50%"}>
-  <FormLabel  >file</FormLabel>
-  <Input textAlign={"left"} placeholder='write file description'   type='text' />
-  
-  </Box>
-  <Box  width={"50%"}>
-  <FormLabel  >file</FormLabel>
-  <Input textAlign={"left"} placeholder='write file description'   type='text' />
-  
-  </Box>
-  <Box mt={"10px"} mb={"10px"} display={"flex"} w={"100%"}  justifyContent={"space-between"}>
-  <Text as='b' fontSize='3xl'>Total</Text>
-  <Text   as='b' fontSize='3xl'>2000$</Text>
-  </Box>
-
-</FormControl>
-
-
-
-
-
-
-
-
-
-
-
-
+            <ModalBody _dark={{bg:'grey'}}  display={"flex"} flexDirection={"column"}>
+<Cardnisa/>
+         
 
             </ModalBody>
-            <ModalFooter display={"flex"} justifyContent={"center"} border={"1px solid red"} >
+            {/* <ModalFooter display={"flex"} justifyContent={"center"} border={"1px solid red"} >
             
               <Button onClick={handlerOtp} colorScheme='blue'>Please lgin first</Button>
-            </ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            </ModalFooter> */}
+            <Button _dark={{bg:'white'}} width={'full'} colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
           </ModalContent>

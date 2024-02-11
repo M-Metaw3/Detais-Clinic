@@ -1,0 +1,9 @@
+.rectangle {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+    max-width: 534px;
+    box-shadow: 0 12px 34px -10px rgba(58,77,233,.15);
+    border-radius: 16px 16px 16px 16px;
+  }

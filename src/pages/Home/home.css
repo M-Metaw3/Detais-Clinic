@@ -7,7 +7,7 @@
     font-weight: 700;
     line-height: 30px;
     position: absolute;
-    animation: Navbar 1s 1  forwards;
+    animation: Navbar 3s 1  forwards;
 }
 
 @keyframes Navbar {
@@ -22,10 +22,10 @@
 }
 
 .navbarimage{
-    background: url('../../assets/Property\ 1=Frame\ 137.png');
-    
-    animation: Navbarimage 3s 1 linear forwards;
-
+    background: url('http://localhost:3111/services/imageCover-2020_05_22_03_42_IMG_5368.jpg-1706801719898-main.jpeg');
+    position: absolute;
+    animation: Navbarimage 5s 1 linear forwards;
+width: 100%;
 }
 @keyframes Navbarimage {
     0% {
@@ -116,7 +116,7 @@ flex-shrink: 0;
     animation: herosection 4s 1 linear forwards;
     width: 100%;
     margin: auto;
-    
+    height: 70vh;
 }
 @keyframes herosection {
     0% {
