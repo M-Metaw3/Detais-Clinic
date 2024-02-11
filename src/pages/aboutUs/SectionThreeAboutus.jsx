@@ -19,6 +19,7 @@ import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from 'react-icons/io5'
 import { ReactElement } from 'react'
 
 import Url from '../../api/ApiUrl';
+// import Url from './../../api/ApiUrl';
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -42,7 +43,7 @@ export default function SectionThreeAboutus({data}) {
             rounded={'md'}
             alt={'feature image'}
             src={
-              `${URL}/AboutUs/${data?.images}`
+              `${Url}/AboutUs/${data?.images}`
             }
             objectFit={'cover'}
           />

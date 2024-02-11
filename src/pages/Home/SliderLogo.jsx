@@ -17,7 +17,7 @@ const SliderLogo = ({logo}) => {
            (
 
 <Slider.Slide >
-                <img src={`${Url}/Homepage/${el?.images}`} alt="any" className='w-36' />
+                <img  width={"200px"} src={`${Url}/Homepage/${el?.images}`} alt="any" className='w-36' />
                 
             </Slider.Slide>
 
