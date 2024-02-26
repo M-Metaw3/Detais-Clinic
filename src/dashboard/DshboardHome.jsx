@@ -4,7 +4,13 @@ import ElipsSection from './HomeDashboard/ElipsSection';
 import { Box } from '@chakra-ui/react';
 import Servicesana from './HomeDashboard/Servicesana';
 
-const DshboardHome = () => {
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+const DshboardHome = (
+    {islogin,isjwt}) => {
+    
+  const nav= useNavigate()
+  if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
     return (
         <Box >
  <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'}>

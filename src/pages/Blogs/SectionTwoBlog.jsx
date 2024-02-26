@@ -16,10 +16,15 @@ import Url from '../../api/ApiUrl';
 export default function SectionTwoBlog({data}) {
 
   return (
-    <Flex  display={"flex"} flexWrap={"wrap"} justifyContent={"space-around"}  py={10}>
+    <Flex  display={"flex"} flexWrap={"wrap"} justifyContent={"center"}  py={10}>
  {data&&data?.data?.map((el,indx)=>(     <Box key={indx}
         maxW={'445px'}
         w={'full'}
+        m={'10px'}
+        display={'flex'}
+        flexDirection={"column"}
+        alignContent={'space-around'}
+        
         // eslint-disable-next-line react-hooks/rules-of-hooks
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}

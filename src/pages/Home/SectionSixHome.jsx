@@ -6,7 +6,7 @@ import SliderLogo from './SliderLogo';
 const SectionSixHome = ({data}) => {
   
     return (
-        <Box textAlign={"center"} >
+        <Box  mt={'20px'} mb={"20px"} textAlign={"center"} >
   <Box  position='relative'  padding='10'>
   <Divider />
   <AbsoluteCenter _dark={{bg:"#1a202c"}} bg='white' px='4'>

@@ -121,41 +121,138 @@ window.location.reload('/dashboard/contentmangment')
 
     
     return (
-        <div>
+//         <div>
          
-            <Box bg={"white"}  p={"10px"}mt={"10px"} mb={"10px"} >
-            <Text m={'10px'} fontSize='3xl'>Section {header}</Text>
+//             <Box bg={"white"}  p={"10px"}mt={"10px"} mb={"10px"} >
+//             <Text m={'10px'} fontSize='3xl'>Section {header}</Text>
+
+
+//             <Box 
+// display={'flex'}
+// justifyContent={'flex-end'}
+
+// >
+
+// <Button onClick={()=>setaddNew(true)}  borderRadius={'full'}>
+
+//     <AddIcon/>
+// </Button>
+// </Box>
+
+
+// {/* card */}
+
+// <Box display={'flex'} flexWrap={'wrap'}  p={'20px'}>
 
 
 
 
 
+// {addNew&&<Box m={"10px"} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
+// <Box display={'flex'}
+// justifyContent={'flex-end'}>
+//    <CloseButton onClick={()=>handeleraddnew()} />
+//     </Box>     
 
+// <Box mb={"10px"} >
+// {formData.images&&(
 
-            <Box 
-display={'flex'}
-justifyContent={'flex-end'}
+// <Image  boxSize={'200px'} borderRadius={'15px'} w={"100%"} src={URL?.createObjectURL(formData.images)?URL?.createObjectURL(formData.images):''} alt='Dan Abramov' />)}
 
->
-
-<Button onClick={()=>setaddNew(true)}  borderRadius={'full'}>
-
-
-    <AddIcon/>
-</Button>
-</Box>
-
-
-
-
-
-
-
-
-
-
-
+// <Input
+// name="images"
+// onChange={handleInputChange}
+// type="file"
+// />
+// {formData.images && (
+// <p>Selected file: {formData.images.name}</p>
+// )}
+// </Box>
+// <FormControl>
+//   <FormLabel>name</FormLabel>
+//   <Input 
+//     name="name"
+//     value={formData.name}
+//     onChange={handleInputChange} type='text' />
   
+//   <FormLabel>spacilist</FormLabel>
+//   <Input   name="spacilist"
+//     value={formData.spacilist}
+//     onChange={handleInputChange}  type='text' />
+  
+//   <FormLabel>Link</FormLabel>
+//   <Input 
+//    name="link"
+//    value={formData.link}
+//    onChange={handleInputChange}type='text' />
+// </FormControl>
+// <Box mt={"10px"} textAlign={'center'} >
+// <Button w={'full'} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
+//     save
+//   </Button>
+
+// </Box>
+// <Box>
+
+// </Box>
+
+// </Box>}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   {data&&data?.map((el)=>(
+
+// <Box m={'10px'} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
+// <Box mb={"10px"} >
+//   <Image boxSize={'200px'} borderRadius={'15px'} w={"100%"} src={el&&el.images&&`${Url}/Homepage/${el.images}`} alt='Dan Abramov' />
+// </Box>
+// <FormControl>
+//   <FormLabel>Name</FormLabel>
+//   <Input value={el?.name} type='Text' />
+  
+//   <FormLabel>Specialist</FormLabel>
+//   <Input value={el?.spacilist} type='text' />
+  
+//   <FormLabel>LinkedIn</FormLabel>
+//   <Input value={el?.link} type='text' />
+// </FormControl>
+
+// <Box>
+// <Button onClick={()=>handelerdelete(el._id)} >Delete</Button>
+// </Box>
+
+// </Box>
+
+
+//   ))}
+
+
+// </Box>
+
+// {/* card */}
+
+
+
+
+
+ 
+//             </Box>
+//         </div>
 
 
 
@@ -176,15 +273,28 @@ justifyContent={'flex-end'}
 
 
 
-{/* card */}
+<>
 
-<Box display={'flex'} flexWrap={'wrap'}  p={'20px'}>
-
-
+            <Box bg={"white"}  p={"10px"}mt={"10px"} mb={"10px"} >
 
 
+   <div className="flex flex-col px-8 pt-6 pb-12 bg-white max-md:px-5">
+      <div className="flex gap-5 justify-between text-xl font-semibold text-neutral-600 max-md:flex-wrap max-md:max-w-full">
+        <div className="my-auto">Section 4</div>
+        <button onClick={()=>setaddNew(true)}  >
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0dbe5b45f64af45165da82b99e1e2fc819844ea1a3b91687197ad89bb23061a8?"
+          className="w-10 aspect-square"
+        />
+        </button>
+      </div>
+      <div className="mt-7 max-md:max-w-full">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
 
-{addNew&&<Box m={"10px"} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
+
+
+        {addNew&&<Box m={"10px"} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
 <Box display={'flex'}
 justifyContent={'flex-end'}>
    <CloseButton onClick={()=>handeleraddnew()} />
@@ -251,44 +361,61 @@ type="file"
 
 
 
-  {data&&data?.map((el)=>(
 
-<Box m={'10px'} bgColor={'rgba(220, 222, 228, 0.25)'} p={"20px"} width={"25%"} >
-<Box mb={"10px"} >
-  <Image boxSize={'200px'} borderRadius={'15px'} w={"100%"} src={el&&el.images&&`${Url}/Homepage/${el.images}`} alt='Dan Abramov' />
+
+
+
+
+
+
+
+
+
+        { data&&data?.map((el)=>( <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col grow px-4 py-6 w-full text-sm rounded shadow-sm bg-zinc-200 bg-opacity-30 text-slate-500 text-opacity-70 max-md:mt-8 max-md:max-w-full">
+              <div className="text-base font-bold text-blue-700 text-opacity-40 max-md:max-w-full">
+                Consultant 3
+              </div>
+              <img
+                loading="lazy"
+                src={el&&el.images&&`${Url}/Homepage/${el.images}`}
+                className="mt-6 w-full aspect-[2.7] max-md:max-w-full"
+              />
+              <div className="mt-6 leading-[143%] max-md:max-w-full">Name</div>
+              <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 whitespace-nowrap bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] leading-[143%] text-slate-500 max-md:pr-5 max-md:max-w-full">
+              {el?.name}
+              </div>
+              <div className="mt-6 leading-[143%] max-md:max-w-full">
+                Specialist{" "}
+              </div>
+              <div className="justify-center items-start py-5 pr-16 pl-4 mt-2.5 whitespace-nowrap bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] leading-[143%] text-slate-500 max-md:pr-5 max-md:max-w-full">
+              {el?.spacilist} 
+              </div>
+              <div className="mt-6 leading-[143%] max-md:max-w-full">
+                LinkedIn link
+              </div>
+              <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 whitespace-nowrap bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] leading-[143%] text-slate-500 max-md:pr-5 max-md:max-w-full">
+              {el?.link} 
+              </div>
+            </div>
+             <Box>
+ <Button onClick={()=>handelerdelete(el._id)} >Delete</Button>
 </Box>
-<FormControl>
-  <FormLabel>Name</FormLabel>
-  <Input value={el?.name} type='Text' />
-  
-  <FormLabel>Specialist</FormLabel>
-  <Input value={el?.spacilist} type='text' />
-  
-  <FormLabel>LinkedIn</FormLabel>
-  <Input value={el?.link} type='text' />
-</FormControl>
-
-<Box>
-<Button onClick={()=>handelerdelete(el._id)} >Delete</Button>
-</Box>
-
-</Box>
-
-
-  ))}
-
-
-</Box>
-
-{/* card */}
-
-
-
-
-
- 
-            </Box>
+          </div>))}
         </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+                 </Box>
+
+
+</>
     );
 }
 

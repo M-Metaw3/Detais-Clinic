@@ -20,7 +20,6 @@ import {
   Text,
   Drawer,
   DrawerContent,
-  useDisclosure,
   BoxProps,
   FlexProps,
   Menu,
@@ -43,14 +42,21 @@ import {
 import { IconType } from 'react-icons'
 import Colormoodwitcher from "../pages/Colormoodwitcher";
 
+// import { useColorModeValue, Box } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/hooks';
+
+import Cookies from 'js-cookie';
+import {Navigate, useNavigate } from 'react-router-dom';
+
+
 
 const LinkItems = [
-  { name: 'Home', icon: FiHome , href:'/dashboard' },
+  // { name: 'Home', icon: FiHome , href:'/dashboard' },
   { name: 'Users', icon: FiHome , href:'/dashboard/users' },
 
-  { name: 'Services', icon: FiTrendingUp , href:'/dashboard/services' },
+  // { name: 'Services', icon: FiTrendingUp , href:'/dashboard/services' },
   { name: 'contact', icon: FiCompass , href:'/dashboard/contact' },
-  { name: 'Requests', icon: FiStar  , href:'/dashboard/contentmangment/requests'},
+  // { name: 'Requests', icon: FiStar  , href:'/dashboard/contentmangment/requests'},
   { name: 'Content Mangement', icon: FiSettings , href:'/dashboard/contentmangment' },
 ]
 
@@ -191,8 +197,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
   )
 }
 
-const DashboardAppBar = () => {
+const DashboardAppBar = ({islogin,isjwt}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+
 
   return (
     <>

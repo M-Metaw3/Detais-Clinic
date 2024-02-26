@@ -22,9 +22,13 @@ import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon,  } from '@mater
 import axios from 'axios';
 import Url from '../api/ApiUrl';
 
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+
 const apiUrl = `${Url}/blogs`; // Replace with your API URL
 
-const Blog = () => {
+const Blog = ({islogin,isjwt}) => {
+  
   const [blogs, setBlogs] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [currentBlog, setCurrentBlog] = useState({
@@ -37,6 +41,8 @@ const Blog = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
+  const nav= useNavigate()
+  if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
 
   // const handleInputChange = (e) => {
   //   const { name, value, type } = e.target;

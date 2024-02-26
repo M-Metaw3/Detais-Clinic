@@ -726,8 +726,11 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import Url from '../api/ApiUrl';
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
 
-const ContactDashboard = () => {
+
+const ContactDashboard = ({islogin,isjwt}) => {
   const toast = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -739,10 +742,10 @@ const ContactDashboard = () => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
   const [selectedContactId, setSelectedContactId] = useState('');
-
   useEffect(() => {
     fetchContacts();
   }, []);
+  if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
 
   const fetchContacts = async () => {
     try {

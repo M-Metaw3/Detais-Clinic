@@ -180,15 +180,17 @@ import {
     useQuery,
   } from '@tanstack/react-query'
 import { GetData } from '../../api/apiFactory';
-
-const ServicesMangment = () => {
-
-
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+const ServicesMangment = ({islogin,isjwt}) => {
     const { isPending, error, data } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
         GetData("/service")
       })
+    const nav= useNavigate()
+    if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
+
 // console.log(data?.data?.data);
 
     return (

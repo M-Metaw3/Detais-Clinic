@@ -15,7 +15,10 @@ import {GetData} from '../../api/apiFactory';
 import {PostDataWithImg} from '../../api/apiFactory';
 import AboutUsDashboard from '../AboutUsDashboard';
 
-const AboutUSMangment = () => {
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+
+const AboutUSMangment = ({islogin,isjwt}) => {
 
 
 
@@ -27,7 +30,7 @@ const AboutUSMangment = () => {
         queryFn: () =>
         GetData("/about")
       })
-      console.log(data?.data?.data);
+      if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
     return (
         <div>
                    <Box bg={"white"} p={"10px"} >

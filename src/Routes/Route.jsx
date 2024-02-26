@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
     BrowserRouter as Router,
   
@@ -54,6 +54,21 @@ const Routess = () => {
   const user = userCookie ? JSON.parse(userCookie) : undefined;
   const jwtCookie = Cookies?.get('user');
   const jwt = jwtCookie ? JSON.parse(jwtCookie) : undefined;
+
+
+
+
+
+
+
+
+
+  const userCookieadmin = Cookies?.get('useradmin');
+  const useradmin = userCookieadmin ? JSON.parse(userCookieadmin) : undefined;
+  const jwtCookieadmin = Cookies?.get('useradmin');
+  const jwtadmin = jwtCookieadmin ? JSON.parse(jwtCookieadmin) : undefined;
+
+
     return ( 
       
                      <Routes >
@@ -101,21 +116,21 @@ const Routess = () => {
    <Route path="/table" element={<Table />}/>
 
    <Route path="/test" element={<Login />}/>
-   <Route path="/daschboard/login" element={<DshboardLogin/>}/>
-   <Route path="/dashboard" element={<DashboardAppBar/>}>
-   <Route path="/dashboard" element={<DshboardHome/>}/>
-   <Route path="/dashboard/services" element={<ServicesDashbord/>}/>
-   <Route path="/dashboard/contentmangment/services" element={<ServicesMangment/>}/>
-   <Route path="/dashboard/contentmangment/requests" element={<RequestsDahboard/>}/>
+   <Route path="/daschboard/login" element={<DshboardLogin islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard" element={<DashboardAppBar islogin={useradmin} isjwt={jwtCookieadmin}/>}>
+   <Route path="/dashboard" element={<DshboardHome islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/services" element={<ServicesDashbord islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/contentmangment/services" element={<ServicesMangment islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/contentmangment/requests" element={<RequestsDahboard islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
 
    
-   <Route path="/dashboard/contentmangment" element={<ContentMangemeny/>}/>
-   <Route path="/dashboard/contentmangment/home" element={<HomeMangment/>}/>
-   <Route path="/dashboard/contentmangment/blogs" element={<Blog/>}/>
+   <Route path="/dashboard/contentmangment" element={<ContentMangemeny islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/contentmangment/home" element={<HomeMangment islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/contentmangment/blogs" element={<Blog islogin={useradmin} isjwt={jwtCookieadmin}/>} />
    {/* <Route path="/dashboard/contentmangment/about" element={<AboutUsDashboard/>}/> */}
-   <Route path="/dashboard/users" element={<UserInfo/>}/>
-   <Route path="/dashboard/contentmangment/about" element={<AboutUSMangment/>}/>
-   <Route path="/dashboard/contact" element={<ContactDashboard/>}/>
+   <Route path="/dashboard/users" element={<UserInfo islogin={useradmin} isjwt={jwtCookieadmin}/>}/>
+   <Route path="/dashboard/contentmangment/about" element={<AboutUSMangment islogin={jwtCookieadmin} isjwt={jwtadmin}/>}/>
+   <Route path="/dashboard/contact" element={<ContactDashboard islogin={useradmin} isjwt={jwtCookieadmin}/>} />
 
 
 

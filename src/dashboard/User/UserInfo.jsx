@@ -804,7 +804,11 @@ import { GetData,DeleteData } from '../../api/apiFactory';
 import Skeletoncomp from '../../components/Skeletoncomp';
 import { Text } from '@chakra-ui/react';
 import Url from '../../api/ApiUrl';
-const UserInfo = () => {
+
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+
+const UserInfo = ({islogin,isjwt}) => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
     name: '',
@@ -834,7 +838,8 @@ const UserInfo = () => {
         queryFn: () =>
         GetData("/users")
       })
-console.log(data);
+      const nav= useNavigate()
+      if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
 
 
 

@@ -18,9 +18,12 @@ import Section2 from '../HomeSections/Section2';
 import Section3Logo from '../HomeSections/Section3Logo';
 import Skeletoncomp from '../../components/Skeletoncomp';
 
+import Cookies from 'js-cookie';
+import {Navigate, NavLink, useNavigate } from 'react-router-dom';
 
 
-const HomeMangment = () => {
+
+const HomeMangment = ({islogin,isjwt}) => {
 //     const [formData, setFormData] = useState({
 //         title: '',
 //         subTitle: '',
@@ -73,6 +76,8 @@ const { isPending, error, data } = useQuery({
   GetData("/Home")
 })
 // console.log(data?.data?.data);
+const nav= useNavigate()
+if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
 
 const filteringHomedata= (section)=>{
 

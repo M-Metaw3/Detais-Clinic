@@ -60,7 +60,8 @@ if(isPending){
   console.log(error)
  } 
   return (
-    <Container maxW={'7xl'}>
+  
+        <Container  maxW={'8xl'}>
       <Box mt={"20px"}>
       <Crousel data={data&&data?.data&&data?.data?.data?.images}/>
       </Box>
@@ -99,7 +100,7 @@ if(isPending){
         color={'#00A9FF'}_dark={{ color: "white" }}
         mb={"10px"}
 
-              fontWeight={300}
+              fontWeight={700}
               fontSize={'2xl'}>
               ${data&&data?.data&&data?.data?.data?.price}
             </Text>

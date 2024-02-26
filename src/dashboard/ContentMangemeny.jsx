@@ -8,7 +8,15 @@ import {
     Outlet,
     Routes
   } from "react-router-dom";
-const ContentMangemeny = () => {
+  
+
+
+  import Cookies from 'js-cookie';
+  import {Navigate, useNavigate } from 'react-router-dom';
+const ContentMangemeny = ({islogin,isjwt}) => {
+
+    const nav= useNavigate()
+    if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
     return (
         <Box p={"20px"}  h={"90vh"}  m={'10px'} bgColor={"white"}>
             <Box>

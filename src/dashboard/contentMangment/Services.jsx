@@ -157,7 +157,7 @@ if(response.status==201){
  setServiceName(e.name)
  setPrice(e.price)
  setid(e._id)
-
+ setImageCover(e.imageCover)
  setDescription(e.description)
 setaddNew(true)
 setupdate(true)
@@ -167,6 +167,7 @@ setupdate(true)
       <Box >
       <Box bgColor={'white'} w={"100%"} p={"10px"} mb={"10px"} display={"flex"} justifyContent={'flex-end'} >
         <Button m={"5px"}  onClick={()=>setaddNew((pre)=>!pre)}  borderRadius={'full'}>
+        
 <AddIcon/>
 </Button>
 </Box>
@@ -272,8 +273,8 @@ setupdate(true)
 {
   data?.map((el)=>(
     
-<Box p={"20px"} margin={"10px"} >
-<Box bg={'white'} display={'flex'} >
+<Box  p={"20px"} margin={"10px"} >
+<Box  p={'20px'} bg={'white'} display={'flex'} >
   <Box w={'50%'}>
   <Heading as='h6' >
   Name

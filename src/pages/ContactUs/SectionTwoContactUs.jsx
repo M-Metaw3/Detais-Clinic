@@ -26,12 +26,12 @@ const SectionTwoContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
-    if (!isFormValid) {
-      alert('Please fill in all fields');
-      // You can display an error message or handle it in any other way
-      return;
-    }
+    // const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
+    // if (!isFormValid) {
+    //   alert('Please fill in all fields');
+    //   // You can display an error message or handle it in any other way
+    //   return;
+    // }
 console.log(formData)
     try {
       const response = await PostData('/contactus/contact', formData);
@@ -51,7 +51,7 @@ console.log(formData)
 console.log(formData)
   return (
 <>
-    <Box
+    {/* <Box
     display="flex"
       flexDirection="column"
       flexWrap="wrap"
@@ -123,7 +123,96 @@ console.log(formData)
  { succ&&<Alert status='success'>
     <AlertIcon />
     success sending message
-  </Alert>}
+  </Alert>} */}
+
+
+
+
+
+
+
+
+
+
+
+
+<Box
+    display="flex"
+      flexDirection="column"
+      flexWrap="wrap"
+      w="50%"
+      textAlign="center"
+      ml="auto"
+      mr="auto"
+      bg={useColorModeValue('white', 'white')}
+      p={4}
+      color="black"
+      >
+
+
+
+  <div className="flex flex-col self-center p-8 mt-5 max-w-full text-sm leading-5 whitespace-nowrap bg-white rounded-lg border border-solid shadow-sm border-[color:var(--Neutral-colors-400,#E1E4ED)] text-slate-500 w-[1086px] max-md:px-5 max-md:mt-10">
+        <div className="flex gap-5 justify-between max-md:flex-wrap max-md:max-w-full">
+          <div className="flex flex-col flex-1 max-md:max-w-full">
+            <div className="font-semibold max-md:max-w-full">Name</div>
+            <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
+            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="name"   onChange={handleInputChange}  type="name" />
+            </div>
+          </div>
+          <div className="flex flex-col flex-1 max-md:max-w-full">
+            <div className="font-semibold max-md:max-w-full">Email</div>
+            <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
+            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="email"   onChange={handleInputChange}  type="name" />
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full">
+          <div className="flex flex-col flex-1 max-md:max-w-full">
+            <div className="font-semibold max-md:max-w-full">Phone</div>
+            <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
+            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="name"   onChange={handleInputChange}  type="phone" />
+            </div>
+          </div>
+          <div className="flex flex-col flex-1 max-md:max-w-full">
+            <div className="font-semibold max-md:max-w-full">Company</div>
+            <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
+            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="company"   onChange={handleInputChange}  type="name" />
+            </div>
+          </div>
+        </div>
+        <div className="mt-6 font-semibold max-md:max-w-full">Message</div>
+        <div className="justify-center items-start py-4 pr-16 pl-4 mt-3 leading-5 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
+        <textarea required   className="w-full  bg-transparent border-none focus:outline-none"    name="message"   onChange={handleInputChange}  type="name" />
+        </div>
+          <button onClick={handleSubmit}>
+        <div className="flex gap-1 justify-center self-start px-5 py-3.5 mt-6 font-semibold text-center text-white rounded-md shadow-sm bg-slate-500">
+
+          <div className="grow">Send message</div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/377ccebbdff2101d4822213e27eb8570a8f84621e8b9201ee74c78e80c1afd4a?"
+            className="w-3 aspect-square"
+            />
+        </div>
+            </button>
+      </div>
+
+
+
+      { succ&&<Alert status='success'>
+    <AlertIcon />
+    success sending message
+  </Alert>} 
+
+      </Box>      
+
+
+
+
+
+
+
+
               </>
     
   );

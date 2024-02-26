@@ -3,7 +3,7 @@ import { AspectRatio ,Image,Box } from '@chakra-ui/react'
 
 const SectionFiveHome = () => {
     return (
-     <AspectRatio m={"50px"} maxW='full' maxHeight='70vh'  ratio={4 / 3}>
+     <AspectRatio  m={"50px"} maxW='92% ' mr={"auto"} ml={"auto"} maxHeight='70vh'  ratio={4 / 3}>
   <iframe
     title='naruto'
     src='https://www.youtube.com/embed/QhBnZ6NPOY0'

@@ -10,7 +10,15 @@ import {
     TableCaption,
     TableContainer,
   } from '@chakra-ui/react'
-const ServicesDashbord = () => {
+  import Cookies from 'js-cookie';
+  import {Navigate, NavLink, useNavigate } from 'react-router-dom';
+const ServicesDashbord = (
+  {islogin,isjwt}) => {
+
+
+    const nav= useNavigate()
+    if (!islogin&&!isjwt) return <Navigate to={'/daschboard/login'} />;
+
     return (
         <div>
 {/* <TableContainer bg={'white'}>

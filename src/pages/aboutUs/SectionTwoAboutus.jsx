@@ -39,8 +39,8 @@ export default function SectionTwoAboutus({data}) {
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={40}>
         <Stack spacing={20}  > 
       
-          <Heading>{data?.title}</Heading>
-          <Text color={'gray.500'} fontSize={'lg'}>
+          <Heading letterSpacing={"0.5px"}> {data?.title}</Heading>
+          <Text letterSpacing={"0.5px"} color={'gray.500'} fontSize={'lg'}>
           {data?.subTitle}
           </Text>
 

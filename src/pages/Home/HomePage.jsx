@@ -14,6 +14,7 @@ import {
   } from '@tanstack/react-query'
 import Skeletoncomp from '../../components/Skeletoncomp';
 import Section8 from './Section8';
+import { Box } from '@chakra-ui/react';
 
 const HomePage = () => {
 
@@ -51,8 +52,11 @@ if(isPending){
 return (
         <div>
             <SectionOneHome data={filteringHomedata("landingpage")}/>
+<Box >
+
             <SectionTwoHome data={filteringHomedata("section")}/>
             <SectionThreeHome data={filteringHomedata("section2")}/>
+            </Box>
             <SectionFourHome/>
             <SectionFiveHome />
             <SectionSevenHome data={filteringHomedata("doctors")}/>

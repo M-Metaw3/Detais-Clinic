@@ -3,7 +3,7 @@ import { Box, AbsoluteCenter, Divider, Text } from '@chakra-ui/react';
 import OurConsultants from './OurConsultants';
 const SectionSevenHome = ({data}) => {
     return (
-                    <Box >
+                    <Box mr={'auto'} ml={"auto"} textAlign={"center"}  w={"95%"} >
   <Box position='relative' padding='10'>
   <Divider />
   <AbsoluteCenter _dark={{bg:"#1a202c"}} bg='white' px='4'>

@@ -56,6 +56,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { GetData } from '../../api/apiFactory';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import Skeletoncomp from '../../components/Skeletoncomp';
+import { Box } from '@chakra-ui/react';
 
 const AboutUs = () => {
   const { isPending, error, data } = useQuery({
@@ -76,6 +77,7 @@ const AboutUs = () => {
   return (
     <div>
       <SectionOneAboutus />
+      <Box  width={'95%'} mr={"auto"} ml={"auto"}>
       {data?.data?.data?.map((el, index) => (
         <React.Fragment key={index}>
           {index === elementToRenderImage && <SectionFourAboutus />}
@@ -84,6 +86,7 @@ const AboutUs = () => {
 
         </React.Fragment>
       ))}
+      </Box>
     </div>
   );
 };

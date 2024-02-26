@@ -11,7 +11,7 @@ const SectionThreeHome = ({data}) => {
 
   <Image order={2}  className='section3imagemain'  src={`${Url}/Homepage/${data&&data[0]?.images}`} alt='Dan Abramov' />
   
-  <Box className='section2text'width={"40%"} alignItems={"center"} textAlign={"center"}>
+  <Box className='section2text'width={"25%"} alignItems={"center"} textAlign={"center"}>
 
   <Text className='section2text1'  >{data&&data[0]?.title}</Text>
   <Text className='section2text2'  >{data&&data[0]?.subTitle} </Text>

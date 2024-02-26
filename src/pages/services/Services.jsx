@@ -9,6 +9,7 @@ import {
     useQuery,
   } from '@tanstack/react-query'
 import Skeletoncomp from '../../components/Skeletoncomp';
+import { Box } from '@chakra-ui/react';
 const Services = () => {
     const { isPending, error, data } = useQuery({
         queryKey: ['dataServices'],
@@ -19,10 +20,10 @@ const Services = () => {
         return <Skeletoncomp/>
     }
     return (
-        <div>
+        <Box >
             <SectionOneServices/>
             <SectionTwoServices dataservices={data?.data?.data}/>
-        </div>
+        </Box>
     );
 }
 

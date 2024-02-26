@@ -13,9 +13,12 @@ import {
 } from '@chakra-ui/react'
 import Login from './Login'
 import loginimage from '../../assets/Frame 278.png'
+import Nav from '../Navbar';
 
 export default function Test() {
   return (
+    <>
+    <Nav/>
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
             <Flex flex={1}>
         <Image
@@ -30,5 +33,6 @@ loginimage          }
       </Flex>
   
     </Stack>
+    </>
   )
 }

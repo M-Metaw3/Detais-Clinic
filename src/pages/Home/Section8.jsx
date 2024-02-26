@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
 export default function Section8() {
   
   return (
-    <Box   borderRadius={'50px'} ml={'auto'} mb={'10px'}  mr={'auto'} w={'95%'}>
+    <Box   borderRadius={'50px'} ml={'auto'} mb={'50px'}   mt={'60px'}  mr={'auto'} w={'93%'}>
     <Flex
       w={'full%'}
       borderRadius={'15px'}
