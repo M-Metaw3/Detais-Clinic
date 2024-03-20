@@ -63,7 +63,7 @@ function SectionTwoServices({dataservices}) {
   console.log(dataservices);
   const a =useColorModeValue('#27374D', 'white')
   return (
-    <Flex display={"flex"} justifyContent={'flex-start'} alignContent={"center"} flexWrap={"wrap"}  p={50} w="full" >
+    <Flex display={"flex"} justifyContent={{base:'center',lg:'flex-start'}} alignContent={"center"} flexWrap={"wrap"}  p={50} w="full" >
  { dataservices&&dataservices?.map((el)=>(
 
 <>

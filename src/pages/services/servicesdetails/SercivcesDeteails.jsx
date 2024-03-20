@@ -225,7 +225,7 @@ if(isPending){
 
           <Box bgcolor={"#F5F8FA"}  borderRadius={"1px"} >
            
-            <Paymentform data={data&&data?.data&&data?.data?.data}/>
+            {/* <Paymentform data={data&&data?.data&&data?.data?.data}/> */}
           </Box>
 
 

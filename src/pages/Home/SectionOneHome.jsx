@@ -28,13 +28,17 @@ console.log(data)
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}
         bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
-        <Stack  maxW={{
+        <Box 
+        
+        maxW={{
           
           sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
           md: "48%", // ~768px
           lg: "38%", // ~992px
           xl: "24%", // ~1280px
-          }} align={'flex-start'} spacing={6}>
+          }} align={'flex-start'} spacing={6}
+          
+          >
           <Text
         className='animation'
       
@@ -68,7 +72,7 @@ console.log(data)
             
             className='containerbutton'
             rounded={'full'}
-            
+            cursor={'pointer'}
             _hover={{ bg: 'whiteAlpha.500' }}>
               Show me more
             </Button>
@@ -78,7 +82,7 @@ console.log(data)
          
         
           </Stack>
-        </Stack>
+        </Box>
       </VStack>
     </Flex>
   <Box w={'100%'} >
