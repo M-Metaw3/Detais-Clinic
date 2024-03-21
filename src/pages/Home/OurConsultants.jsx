@@ -40,15 +40,9 @@ useEffect(() => {
 
         height={"500px"}
         // maxW={{'25%'}}
-        maxW={{  
-          
-        sm: "100%", // ~480px. em is a relative unit and is dependant on the font size.
-        md: "48%", // ~768px
-        lg: "38%", // ~992px
-        xl: "24%", // ~1280px
-        }}
-        w={'full'}
-        boxShadow={'2xl'}
+  width={{base:'300px',xl:"24%"}}
+     
+        boxShadow={'lg'}
         rounded={'lg'}
         pos={'relative'}
         display={"flex"}
@@ -64,8 +58,8 @@ useEffect(() => {
             backgroundPosition: 'center',
           }}
         zIndex={0}>
-            <NavLink style={{margin:"10px"}} href={el&&el?.link}>
-            <Image   className="linked-in" alt="Linked in" src='https://cdn.builder.io/api/v1/image/assets/TEMP/5633bb01f192cdb270007e2f8dc3d82edb207660d345719558e18d3961314cb3?"'/>
+            <NavLink style={{margin:"3px"}} href={el&&el?.link}>
+            <Image   className="linked-in " alt="Linked in" src='https://cdn.builder.io/api/v1/image/assets/TEMP/5633bb01f192cdb270007e2f8dc3d82edb207660d345719558e18d3961314cb3?"'/>
             </NavLink>
         <Stack    className='namecard'  >
         

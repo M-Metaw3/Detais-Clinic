@@ -47,7 +47,7 @@ console.log(data&&data[0]?.images)
         className='animation'
       
             lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })} style={{width:'40%',position:"absolute",}}>
+            fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })} my={'-40px'} style={{width:'40%',position:"absolute",}}>
           {data&&data[0]?.title}
       
           </Text>
@@ -73,16 +73,7 @@ console.log(data&&data[0]?.images)
           </Text>
 
         
-          <NavLink to={"/services"}>
-          <Button
-            
-            className='containerbutton'
-            rounded={'full'}
-            cursor={'pointer'}
-            _hover={{ bg: 'whiteAlpha.500' }}>
-              Show me more
-            </Button>
-            </NavLink>
+    
           </Box>
           <Stack direction={'row'}>
          
