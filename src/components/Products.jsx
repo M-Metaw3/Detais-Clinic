@@ -7,7 +7,7 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-
+// aa
 const Products = (props) => {
 console.log(props);
   // console.log(props.attributes.thumbnail.data.attributes.url);
