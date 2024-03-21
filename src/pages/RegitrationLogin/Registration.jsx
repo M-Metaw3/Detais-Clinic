@@ -234,7 +234,7 @@ const nav= useNavigate()
 
 
           </div>
-              <Button onClick={onOpen}><Text color={'blue.500'}>Forgot password?</Text></Button>
+              {/* <Button onClick={onOpen}><Text color={'blue.500'}>Forgot password?</Text></Button> */}
         </div>
               <Modal isOpen={isOpen} onClose={onClose}>
          <ModalOverlay />
