@@ -1,5 +1,6 @@
 
 'use client'
+import {useState,useEffect} from 'react'
 
 import {
   Box,
@@ -21,9 +22,15 @@ const IMAGE =
 
 export default function OurConsultants({data}) {
 console.log(data)
+const [urlimg, setUrlimg] = useState([])
+
+useEffect(() => {
+  
+  setUrlimg(data)
+},[data])
   return (
         <Box  display={"flex"} padding={"30px"} flexWrap={"wrap"} justifyContent={"space-around"} py={12}>
-  {data&&data?.map((el)=>(
+  {data&&data?.map((el,i)=>(
 
 <Box
         role={'group'}
@@ -49,7 +56,10 @@ console.log(data)
       justifyContent={"center"}
 
         style={{
-            backgroundImage: `url(${Url}/Homepage/${el?.images})`,
+      
+            // backgroundImage: `url(${Url}/Homepage/${el?.images})`,
+            backgroundImage: `url(http://143.110.153.206/HomePage/${data[i]?.images})`,
+
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

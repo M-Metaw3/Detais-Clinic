@@ -31,6 +31,7 @@ const Section2 = ({header, data, enumsec} ) => {
       });
       const [addNew , setaddNew] = useState(false);
       const [btn , setbtn] = useState(false);
+      const [loadingcreate, setloadingcreate] = useState(false);
 
 
       console.log(formData.images)
@@ -49,7 +50,7 @@ console.log(uploadProgress);
         try {
  
     
-      
+          setloadingcreate(true)
           const response = await PostDataWithImg('/Home', data, (progressEvent) => {
             const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
             setUploadProgress(percentCompleted);
@@ -59,6 +60,7 @@ console.log(uploadProgress);
           
        
           if(response.status==201){
+            setloadingcreate(false)
             toast({
               title: 'Section Updated',
               description: 'Section updated successfully!',
@@ -333,7 +335,7 @@ type="file"
    onChange={handleInputChange}type='text' />
 </FormControl>
 <Box mt={"10px"} textAlign={'center'} >
-<Button w={'full'} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
+<Button isLoading={loadingcreate} w={'full'} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
     save
   </Button>
 
@@ -371,14 +373,17 @@ type="file"
 
 
 
-        { data&&data?.map((el)=>( <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+        { data&&data?.map((el,i)=>( <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow px-4 py-6 w-full text-sm rounded shadow-sm bg-zinc-200 bg-opacity-30 text-slate-500 text-opacity-70 max-md:mt-8 max-md:max-w-full">
               <div className="text-base font-bold text-blue-700 text-opacity-40 max-md:max-w-full">
                 Consultant 3
               </div>
               <img
                 loading="lazy"
-                src={el&&el.images&&`${Url}/Homepage/${el.images}`}
+                // src={el.images&&`${Url}/Homepage/${el.images}`}
+                src={`http://143.110.153.206/HomePage/${data[i]?.images}`}
+
+                
                 className="mt-6 w-full aspect-[2] max-md:max-w-full"
               />
               <div className="mt-6 leading-[143%] max-md:max-w-full">Name</div>

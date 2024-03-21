@@ -1,5 +1,5 @@
 
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {  FormControl,Img ,
     FormLabel,Image,
     FormErrorMessage,FormHelperText, FormHelper,Text, Textarea ,Box,Heading,Input,Button,CloseButton ,
@@ -20,6 +20,7 @@ import Url from '../../api/ApiUrl';
 
 const Section3Logo = ({header,data,enumsec} ) => {
   const toast = useToast();
+  const [loadingcreate, setloadingcreate] = useState(false);
 
     const [formData, setFormData] = useState({
   
@@ -42,12 +43,14 @@ console.log(uploadProgress);
  
     
         //   const response = await PostDataWithImg('/Home',data,)
+        setloadingcreate(true);
           const response = await PostDataWithImg('/Home', data, (progressEvent) => {
             const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
             setUploadProgress(percentCompleted);
           });
           console.log(response);
           if(response.status==201){
+            setloadingcreate(false);
             setFormData({images:null})
             setaddNew(false)
             toast({
@@ -63,6 +66,7 @@ console.log(uploadProgress);
             console.log("done")
           }
         } catch (error) {
+          setloadingcreate(false);
           console.log(error);
         }
       };
@@ -106,6 +110,11 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
     console.log(error);
   }
 }
+const [urlimg,setUrlimg]=useState([])
+useEffect(() => {
+    
+  setUrlimg(data)
+},[data])
     return (
 //         <div>
 
@@ -252,7 +261,7 @@ type="file"
 
 </Box>
 <Box m={"10px"} textAlign={'center'} >
-<Button w={'full'} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
+<Button isLoading={loadingcreate} w={'full'} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
     save
   </Button>
 
@@ -263,7 +272,10 @@ type="file"
                     <div>Logo {indx+1}</div>
                     <img
                       loading="lazy"
-                      src={`${Url}/Homepage/${el.images}`} alt='logo'
+                      // src={`${Url}/Homepage/${el.images}`} 
+                      src={`http://143.110.153.206/HomePage/${urlimg[indx]?.images}`}
+
+                      alt='logo'
                       className="mt-6 w-full aspect-[1.47]"
                     />
                   </div>

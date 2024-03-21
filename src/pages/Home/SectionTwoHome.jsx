@@ -4,9 +4,12 @@ import { Container, Flex, Button, Text, VStack,Center, useBreakpointValue } from
 import { AspectRatio ,Image,Box } from '@chakra-ui/react'
 import './stylehome/section2.css'
 import imagesection2 from '../../assets/image 4 (1).png'
-import { useEffect ,useRef } from 'react'
+import { useEffect ,useState,useRef } from 'react'
 import Url from '../../api/ApiUrl'
 export default function SectionTwoHome({data}) {
+  const [urlimg, setUrlimg] = useState('')
+
+
   const imageref=useRef()
 console.log(data)
 console.log(imageref)
@@ -27,11 +30,19 @@ useEffect(() => {
     window.removeEventListener('scroll', handleScroll);
   };
 }, []); // Empty dependency array to ensure the effect runs only once on mount
-
+console.log(`http://143.110.153.206/HomePage/${data&&data[0]?.images}`)
+useEffect(() => {
+    
+  setUrlimg(`http://143.110.153.206/HomePage/${data&&data[0]?.images}`)
+},[data])
   return (
 <Box  className='test' >
 <Box  className='section2image' >
-  <Image ref={imageref} className='section2imagemain'  src={`${Url}/Homepage/${data&&data[0]?.images}`} alt='Dan Abramov' />
+  <Image ref={imageref} className='section2imagemain' loading='lazy'
+   src={urlimg} 
+
+
+   alt='Dan Abramov' />
   </Box>
   <Box  className='section2text'width={"37%"} alignItems={"center"} textAlign={"center"}>
     <br/>

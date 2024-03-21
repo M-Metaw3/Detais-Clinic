@@ -22,9 +22,11 @@ import Url from '../../api/ApiUrl';
 
 
 const Section1 = ({header,enumsec , data} ) => {
+  
   const toast = useToast();
   const nav= useNavigate()
 console.log(data)
+const [loadingcreate, setloadingcreate] = useState(false);
 
 const [file, setFile] = useState(null);
 const [fileName, setFileName] = useState('');
@@ -54,12 +56,14 @@ const handleSubmitSection1 = async () => {
 
   try {
     if (data.length==0) {
+      setloadingcreate(true);
       const response = await PostDataWithImg('/Home', dataa, (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         setUploadProgress(percentCompleted);
       });
       console.log(response);
       if (response.status === 201) {
+        setloadingcreate(false);
         toast({
           title: 'Section Updated',
           description: 'Section updated successfully!',
@@ -71,12 +75,14 @@ nav('/dashboard/contentmangment')
 
       }
     } else {
+      setloadingcreate(true);
       const response = await UpdateDataWithImg(`/Home/${data[0]?._id}`, dataa, (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         setUploadProgress(percentCompleted);
       });
       console.log(response);
       if (response.status === 200) {
+        setloadingcreate(false);
         toast({
           title: 'Section Updated',
           description: 'Section updated successfully!',
@@ -89,6 +95,7 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
       }
     }
   } catch (error) {
+    setloadingcreate(false);
     console.log(error);
   }
 };
@@ -338,7 +345,7 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
        ></textarea>
             </div>
           </div>
-           <Button onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
+           <Button isLoading={loadingcreate} onClick={handleSubmitSection1} colorScheme='teal' size='sm'>
      save
    </Button>
         </div>

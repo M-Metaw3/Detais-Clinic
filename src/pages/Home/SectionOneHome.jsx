@@ -9,14 +9,18 @@ import "./home.css"
 import { NavLink } from 'react-router-dom'
 import Url from '../../api/ApiUrl'
 export default function SectionOneHome({data}) {
-console.log(data)
+console.log(data&&data[0]?.images)
   return (
     <>    <Flex
     className='navbarimage'
     style={{
-      backgroundImage: `url(${Url}/Homepage/${data&&data[0]?.images})`,
+      backgroundImage: `url(http://143.110.153.206/HomePage/${data&&data[0]?.images})`,
+      // backgroundImage: `url(http://143.110.153.206/HomePage/imageHome-1710987435794.jpeg
+      // )`,
+
     
     }}
+
       w={'full%'}
       h={'70vh'}
   
@@ -43,7 +47,7 @@ console.log(data)
         className='animation'
       
             lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })} style={{width:'40%',position:"absolute",}}>
+            fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })} style={{width:'40%',position:"absolute",}}>
           {data&&data[0]?.title}
       
           </Text>
@@ -51,7 +55,8 @@ console.log(data)
           <Text
      
         className='newtext'
-         
+        my={'15px'}
+         fontSize={{base:'lg',md:'xl'}}
             lineHeight={1.2}
          >
           {/* {data&&data[0]?.subTitle} */}
@@ -60,7 +65,8 @@ console.log(data)
           <Text
       
       className='newtext2'
-      
+      fontSize={{base:'md',md:'lg'}}
+      mb={'10px'}
       lineHeight={1.3}
       >
  {data&&data[0]?.subTitle}
