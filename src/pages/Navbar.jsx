@@ -229,17 +229,68 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 }
 
 const MobileNav = () => {
+  console.log(NAV_ITEMS)
+  const userCookie = Cookies?.get('user');
+  const user = userCookie ? JSON.parse(userCookie) : undefined;
+  const jwtCookie = Cookies?.get('user');
+  const jwt = jwtCookie ? JSON.parse(jwtCookie) : undefined;
   return (
     <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+
+<div
+          flex={{ base: 1, md: 0 }}
+          justify={'flex-end'}
+          direction={'column'}
+          spacing={6}>
+            {!user&&!jwt?
+           <NavLink to={`/login`} className='text-decoration-none d-flex align-items-center'>
+          <Button
+          mr={"40px"}
+          onClick={()=>{console.log("ssssssssss")}}
+            as={'a'}
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'14px'}
+            fontWeight={600}
+            lineHeight={"20px"}
+            color={'white'}
+            bg={'blue.400'}
+            href={'#'}
+            _hover={{
+              bg: 'blue.300',
+            }}>
+              login In
+             <ArrowForwardIcon margin={"3px"}/> 
+          </Button >
+          </NavLink>:         
+          //  <NavLink to={`/`} className='text-decoration-none d-flex align-items-center'>
+          <Button
+          mr={"40px"}
+          onClick={()=>{clearCookiesAndReload()}}
+            as={'a'}
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'14px'}
+            fontWeight={600}
+            lineHeight={"20px"}
+            color={'white'}
+            bg={'red.400'}
+            href={'#'}
+            _hover={{
+              bg: 'red.800',
+            }}>
+           logout
+             <ArrowForwardIcon margin={"3px"}/> 
+          </Button >
+          // </NavLink>
+          }
+        </div>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      
     </Stack>
   )
 }
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, link }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
@@ -247,15 +298,17 @@ const MobileNavItem = ({ label, children, href }) => {
       <Box
         py={2}
         as="a"
-        href={href ?? '#'}
+        // href={href ?? '#'}
         justifyContent="space-between"
         alignItems="center"
         _hover={{
           textDecoration: 'none',
         }}>
+             <NavLink to={link}> 
         <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
           {label}
         </Text>
+        </NavLink> 
         {children && (
           <Icon
             as={ChevronDownIcon}
@@ -278,7 +331,7 @@ const MobileNavItem = ({ label, children, href }) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Box as="a" key={child.label} py={2} href={child.href}>
+              <Box as="a" key={child.label} py={2} >
                 {child.label}
               </Box>
             ))}
@@ -312,8 +365,8 @@ const NAV_ITEMS = [
 
   },
   // {
-  //   label: 'Language',
-  //   link:'/services'
+  //   label: 'Login',
+  //   link:'/login'
 
   // },
 
