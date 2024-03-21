@@ -96,7 +96,16 @@ window.location.reload('http://localhost:3000/dashboard/contentmangment')
     }
   } catch (error) {
     setloadingcreate(false);
-    console.log(error);
+    if(error.message=='Request failed with status code 413'){
+      toast({
+        title: 'warning',
+        description: 'image must be less than 1mb',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+      }); 
+    }
+   
   }
 };
 
