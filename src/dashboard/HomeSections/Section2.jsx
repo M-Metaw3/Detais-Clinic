@@ -379,7 +379,7 @@ type="file"
               <img
                 loading="lazy"
                 src={el&&el.images&&`${Url}/Homepage/${el.images}`}
-                className="mt-6 w-full aspect-[2.7] max-md:max-w-full"
+                className="mt-6 w-full aspect-[2] max-md:max-w-full"
               />
               <div className="mt-6 leading-[143%] max-md:max-w-full">Name</div>
               <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 whitespace-nowrap bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] leading-[143%] text-slate-500 max-md:pr-5 max-md:max-w-full">

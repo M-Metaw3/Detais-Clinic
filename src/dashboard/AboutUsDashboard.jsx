@@ -15,6 +15,7 @@ const YourFormComponent = ({data}) => {
     subTitle: '',
     // ... other form fields
   });
+  const [loadingcreate, setloadingcreate] = useState(false);
 
   const [selectedFileData, setSelectedFileData] = useState(null);
 console.log(selectedFileData)
@@ -36,16 +37,19 @@ console.log(selectedFileData)
 
 
     //   const response = await PostDataWithImg('/Home',data,)
+    setloadingcreate(true);
       const response = await PostDataWithImg('/about', data, (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         // setUploadProgress(percentCompleted);
       });
       console.log(response);
       if(response.status==201){
+        setloadingcreate(false);
         alert("success uploaded data")
       }
     } catch (error) {
       console.log(error);
+      setloadingcreate(false);
     }
     const finalFormData = {
       ...formData,
@@ -137,7 +141,7 @@ const handelerdelete=async(e)=>{
 
         {/* Submit button */}
         <Box width={"100%"} display={"flex"} p={"10px"} justifyContent={"space-around"}>
-        <Button width={"80px"}  colorScheme="teal" onClick={handleSubmit}>
+        <Button isLoading={loadingcreate}  width={"80px"}  colorScheme="teal" onClick={handleSubmit}>
           save
         </Button>
         <Button width={"80px"} colorScheme="gray" onClick={handlercancel}>

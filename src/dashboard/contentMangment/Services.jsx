@@ -20,6 +20,7 @@ import { AddIcon } from '@chakra-ui/icons';
 
 import { PostDataWithImg ,UpdateDataWithImg ,DeleteData} from './../../api/apiFactory';
 import Url from '../../api/ApiUrl';
+import { set } from 'mongoose';
 
 const ServiceForm = ({data}) => {
   console.log(data);
@@ -34,6 +35,12 @@ const ServiceForm = ({data}) => {
   const [addNew , setaddNew] = useState(false);
   const [update , setupdate] = useState(false);
   const [images, setImages] = useState([]);
+  const [loadingdelete, setloadingdelete] = useState(false);
+  const [loadingedite, setloadingedite] = useState(false);
+  const [loadingcreate, setloadingcreate] = useState(false);
+
+
+
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const [priceDiscount, setPriceDiscount] = useState(0);
@@ -62,14 +69,17 @@ console.log(images)
         formData.append('images', image);
       });
      
-   
+      setloadingcreate(true)
    const response=   await PostDataWithImg('service', formData, (progressEvent) => {
     const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
     setUploadProgress(percentCompleted);
    });
 console.log(response)
 if(response.status==201){
+
+  setloadingcreate(false);
   alert("success uploaded data")
+  window.location.reload()
 }
       // Refresh the list of services after creating a new one
       // const response2 = await axios.get('http://localhost:3111/service');
@@ -82,6 +92,8 @@ if(response.status==201){
       setImageCover(null);
       setImages([]);
     } catch (error) {
+  setloadingcreate(false);
+
       console.error('Error creating service:', error);
     }
   };
@@ -93,8 +105,10 @@ if(response.status==201){
 
 
 const handelerDelete=async(id)=>{
+  setloadingdelete(true);
   const response=   await DeleteData(`service/${id}`);
   if(response.status==204){
+    setloadingdelete(false);
     alert("success deleted data")
     window.location.reload()
   }
@@ -117,11 +131,14 @@ const handelerDelete=async(id)=>{
       });
    
      
-   
+      setloadingedite(true);
    const response=   await UpdateDataWithImg(`service/${id}`, formData);
 console.log(response)
-if(response.status==201){
+if(response.status==200){
+  
+  setloadingedite(false);
   alert("success updated data")
+  window.location.reload()
 }
       // Refresh the list of services after creating a new one
       // const response2 = await axios.get('http://localhost:3111/service');
@@ -134,6 +151,7 @@ if(response.status==201){
       setImageCover(null);
       setImages([]);
     } catch (error) {
+      setloadingedite(false);
       console.error('Error creating service:', error);
     }
   };
@@ -254,9 +272,9 @@ setupdate(true)
           </Box>
         </Box>
           <Box>
-     {!update?       <Button colorScheme="teal" onClick={handleCreateService}>
+     {!update?       <Button isLoading={loadingcreate} colorScheme="teal" onClick={handleCreateService}>
               Create Service
-            </Button>:<Button colorScheme="teal" onClick={handleupdateService}>
+            </Button>:<Button isLoading={loadingedite} colorScheme="teal" onClick={handleupdateService}>
              Update
             </Button>}
           </Box></>}
@@ -273,24 +291,24 @@ setupdate(true)
 {
   data?.map((el)=>(
     
-<Box  p={"20px"} margin={"10px"} >
-<Box  p={'20px'} bg={'white'} display={'flex'} >
-  <Box w={'50%'}>
-  <Heading as='h6' >
-  Name
+<Box   p={"20px"} margin={"10px"} >
+<Box   p={'20px'} bg={'white'} justifyContent={'space-around'} display={'flex'} >
+  <Box   w={'100%'}>
+  <Heading color={'rgb(59, 130, 246)'} as='h6' >
+  Name :
   </Heading>
     <Text>
     {el?.name}
     </Text>
-    <Heading as='h2' size='xl'>
-Price
+    <Heading  color={'rgb(59, 130, 246)'} as='h4' size='xl'>
+Price :
   </Heading>
     <Text>
     {el?.price}
     
     </Text>
-    <Heading as='h2' size='xl'>
-   discription
+    <Heading color={'rgb(59, 130, 246)'} as='h2' size='xl'>
+   discription :
   </Heading>
        <Text wordBreak={'break-word'}>
     {el?.description}
@@ -298,8 +316,8 @@ Price
     </Text>
   </Box>
 <Box>
-<Box m={"20px"} w={"50%"}>
-  <Image src={el?.imageCover&&`  http://localhost:3111/services/${el?.imageCover}`} alt='Dan Abramov' />
+<Box m={"20px"}  w={"50%"}>
+  <Image w={'100%'} h={"auto"} src={el?.imageCover&&`  http://localhost:3111/services/${el?.imageCover}`} alt='Dan Abramov' />
 </Box>
 
 
@@ -321,10 +339,10 @@ el?.images&&el?.images?.map((image)=>(
 <Box bg={'white'}  w={"50%"} mt={'10px'} display={"flex"} justifyContent={"space-between"}>
 </Box>
 </Box>
-<Button width={"100%"} textAlign={'center'} onClick={()=>handelerUpdate(el)}  colorScheme='teal' variant='solid'>
+<Button  width={"100%"} m={'10px'} textAlign={'center'} onClick={()=>handelerUpdate(el)}  colorScheme='teal' variant='solid'>
     edit
   </Button>
-  <Button width={"100%"} textAlign={'center'} onClick={()=>handelerDelete(el._id)} colorScheme='teal' variant='outline'>
+  <Button isLoading={loadingdelete} width={"100%"} m={'10px'} textAlign={'center'} onClick={()=>handelerDelete(el._id)} colorScheme='teal' variant='outline'>
     delete
   </Button>
 </Box>
