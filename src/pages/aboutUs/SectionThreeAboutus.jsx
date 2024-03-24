@@ -50,10 +50,14 @@ export default function SectionThreeAboutus({data}) {
         </Flex>
         <Stack spacing={4}>
       
-          <Heading>
+          <Heading
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      >
           {data?.title}
           </Heading>
-          <Text color={'gray.500'} fontSize={'lg'}>
+          <Text
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      color={'gray.500'} fontSize={'lg'}>
           {data?.subTitle}
           </Text>
 

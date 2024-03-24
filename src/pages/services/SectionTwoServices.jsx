@@ -98,6 +98,7 @@ function SectionTwoServices({dataservices}) {
               // color={useColorModeValue('#27374D', 'white')}
               color='#27374D'
               _dark={{ color: "white" }}
+              style={{ fontFamily: 'Manrope, sans-serif' }}
 
               isTruncated>
               {el&&el?.name}
@@ -119,6 +120,7 @@ function SectionTwoServices({dataservices}) {
             <Box fontSize="2xl" 
               // color={useColorModeValue('#00C8FF', '#_dark={{ color: "white" }}')}
               color='#00C8FF' _dark={{ color: "white" }}
+              style={{ fontFamily: 'Manrope, sans-serif' }}
 
               >
               <Box as="span"  fontSize="lg">
@@ -135,6 +137,7 @@ function SectionTwoServices({dataservices}) {
 <Text 
               color="rgba(52, 84, 113, 0.80)" _dark={{ color: "white" }}
               // color='rgba(52, 84, 113, 0.80)'
+              style={{ fontFamily: 'Manrope, sans-serif' }}
 
 noOfLines={[1, 2, 3, 4]}>
   {el && el.description && el.description.length > 0

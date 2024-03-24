@@ -36,7 +36,9 @@ useEffect(() => {
   setUrlimg(`http://143.110.153.206/HomePage/${data&&data[0]?.images}`)
 },[data])
   return (
-<Box  className='test' >
+<Box 
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      className='test' >
 <Box  className='section2image' >
   <Image ref={imageref} className='section2imagemain' loading='lazy'
    src={urlimg} 
@@ -49,8 +51,12 @@ useEffect(() => {
     <br/>
     <br/>
     <br/>
-  <Text className='section2text1'  > {data&&data[0]?.title}</Text>
-  <Text className='section2text2'  >{data&&data[0]?.subTitle} </Text>
+  <Text className='section2text1' 
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      > {data&&data[0]?.title}</Text>
+  <Text className='section2text2' 
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      >{data&&data[0]?.subTitle} </Text>
   </Box>
 </Box>
 // <AspectRatio m={"50px"} maxW='full' maxHeight='70vh'  ratio={4 / 3}>

@@ -91,6 +91,8 @@ if(isPending){
               lineHeight={1.1}
               fontWeight={600}
               color={'#164863'} _dark={'white'}
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+
               fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
               {data&&data?.data&&data?.data?.data?.name}
             
@@ -99,6 +101,7 @@ if(isPending){
               // color={useColorModeValue('gray.900', 'gray.400')}
         color={'#00A9FF'}_dark={{ color: "white" }}
         mb={"10px"}
+        style={{ fontFamily: 'Manrope, sans-serif' }}
 
               fontWeight={700}
               fontSize={'2xl'}>
@@ -124,6 +127,7 @@ if(isPending){
                 // color={useColorModeValue('gray.500', 'gray.400')}
                 color={'gray.500'}_dark={{ color: "white" }}
                 mb={"10px"}
+                style={{ fontFamily: 'Manrope, sans-serif' }}
 
                 fontSize={'2xl'}
                 fontWeight={'300'}>
@@ -134,7 +138,9 @@ if(isPending){
             mb={"10px"}
             >
               How to get this service ?
-                <UnorderedList m={"30px"}>
+                <UnorderedList 
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      m={"30px"}>
   <ListItem>To register and create an account you only need your name and email, we will ask you to verify your email, once verified. you will be pront some questions related to the design setting.</ListItem>
   <ListItem>To request a design, simply go to my requests and click on the create button.It is important that you compress the STL file before uploading it to .zip . Answer the questions about the design configuration and specify the necessary settings for design.</ListItem>
   <ListItem>Once we receive your request, a designer will take the request and perform the work requested, our system will notify you of the design progress. Once the design is completed, a sample of the result will be sent to you for your review and approval.</ListItem>

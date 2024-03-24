@@ -18,8 +18,12 @@ const SectionThreeHome = ({data}) => {
   
   <Box mt={{base:"20px",md:''}} className='section2text'width={"37%"} alignItems={"center"} textAlign={"center"}>
 
-  <Text className='section2text1'  >{data&&data[0]?.title}</Text>
-  <Text className='section2text2'  >{data&&data[0]?.subTitle} </Text>
+  <Text className='section2text1'  
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      >{data&&data[0]?.title}</Text>
+  <Text className='section2text2' 
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      >{data&&data[0]?.subTitle} </Text>
   </Box>
 </Box>
     );

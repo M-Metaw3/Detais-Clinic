@@ -15,7 +15,8 @@ const Layout = ({x}) => {
    <>
    <Nav/>
   
-   <Outlet/>
+   <Outlet 
+   />
    <Footer/>
    </>
     );

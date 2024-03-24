@@ -170,7 +170,7 @@ console.log(formData)
           <div className="flex flex-col flex-1 max-md:max-w-full">
             <div className="font-semibold max-md:max-w-full">Phone</div>
             <div className="justify-center items-start py-5 pr-16 pl-4 mt-3 bg-white rounded-md border border-solid shadow-sm border-[color:var(--Neutral-colors-300,#F1F3F7)] max-md:pr-5 max-md:max-w-full">
-            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="name"   onChange={handleInputChange}  type="phone" />
+            <input required   className="w-full  bg-transparent border-none focus:outline-none"    name="phone"   onChange={handleInputChange}  type="phone" />
             </div>
           </div>
           <div className="flex flex-col flex-1 max-md:max-w-full">

@@ -24,7 +24,8 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <Router>
     <ChakraProvider>
-    <App />
+    <App 
+      />
     </ChakraProvider>
     </Router>
     </QueryClientProvider>

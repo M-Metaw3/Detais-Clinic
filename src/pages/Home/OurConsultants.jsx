@@ -29,7 +29,9 @@ useEffect(() => {
   setUrlimg(data)
 },[data])
   return (
-        <Box  display={"flex"} padding={"30px"} flexWrap={"wrap"} justifyContent={"space-around"} py={12}>
+        <Box  
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      display={"flex"} padding={"30px"} flexWrap={"wrap"} justifyContent={"space-around"} py={12}>
   {data&&data?.map((el,i)=>(
 
 <Box

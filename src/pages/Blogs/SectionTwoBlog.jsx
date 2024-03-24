@@ -55,10 +55,14 @@ export default function SectionTwoBlog({data}) {
             // eslint-disable-next-line react-hooks/rules-of-hooks
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
-            fontFamily={'body'}>
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+            
+            >
          {el?.title}
           </Heading>
-          <Text color={'gray.500'}>
+          <Text
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+      color={'gray.500'}>
    {el?.description}
           </Text>
         </Stack>

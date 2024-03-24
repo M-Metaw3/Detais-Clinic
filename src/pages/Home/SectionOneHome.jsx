@@ -45,7 +45,7 @@ console.log(data&&data[0]?.images)
           >
           <Text
         className='animation'
-      
+      fontFamily={'Manrope'}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })} my={'-40px'} style={{width:'40%',position:"absolute",}}>
           {data&&data[0]?.title}
@@ -58,16 +58,19 @@ console.log(data&&data[0]?.images)
         my={'15px'}
          fontSize={{base:'lg',md:'xl'}}
             lineHeight={1.2}
+      style={{ fontFamily: 'Manrope, sans-serif' }}
+          
          >
           {/* {data&&data[0]?.subTitle} */}
           Digital Design FOR LABORATORIES AND DENTISTS
           </Text>
           <Text
-      
+      style={{ fontFamily: 'Manrope, sans-serif' }}
       className='newtext2'
       fontSize={{base:'md',md:'lg'}}
       mb={'10px'}
       lineHeight={1.3}
+      fontStyle={'Manrope'}
       >
  {data&&data[0]?.subTitle}
           </Text>
